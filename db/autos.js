@@ -8,17 +8,17 @@ let autos = {
             comentarios: [
                 {
                     nombre_usuario: 'Nicolas',
-                    foto_perfil_usuario: '/ma',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Muy buen auto!'
                 },
                 {
                     nombre_usuario: 'Joaquin',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Me encanta la variedad de colores en los que viene!'
                 },
                 {
                     nombre_usuario: 'Lucio',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'No quede conforme con el tamaño del baul.'
                 },
             ]
@@ -31,17 +31,17 @@ let autos = {
             comentarios: [
                 {
                     nombre_usuario: 'Felipe',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Una locura este auto, lo puse a 250 con limitador y llego tranquilo.'
                 },
                 {
                     nombre_usuario: 'Valentin',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Muy comodo y no se re rompe nada nunca.'
                 },
                 {
                     nombre_usuario: 'Santiago',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Muy caro para lo que es, con esta plata compraba un mejor auto.'
                 },
             ]
@@ -53,17 +53,17 @@ let autos = {
             comentarios: [
                 {
                     nombre_usuario: 'Felix',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Lo meti en la puna Argentina y se la banco como un toro.'
                 },
                 {
                     nombre_usuario: 'Santiago',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Una bestia, ademas vuela en la ruta.'
                 },
                 {
                     nombre_usuario: 'Benjamin',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Increible la capacidad que tiene,lo que si, un poco caro.'
                 },
             ]
@@ -75,17 +75,17 @@ let autos = {
             comentarios: [
                 {
                     nombre_usuario: 'Justo',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Increible la potencia que tiene.'
                 },
                 {
                     nombre_usuario: 'Geronimo',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Me costo acostumbrarme al manejo, pero una ves que lo haces, es un lujo!'
                 },
                 {
                     nombre_usuario: 'Santino',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Un auto perfecto si estas buscando lujo, velocidad y confort.'
                 },
             ]
@@ -97,17 +97,17 @@ let autos = {
             comentarios: [
                 {
                     nombre_usuario: 'Julieta',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'El auto mas comodo del mercado.'
                 },
                 {
                     nombre_usuario: 'Pedro',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Carisimo pero tiene un buen andar la verdad.'
                 },
                 {
                     nombre_usuario: 'Lucia',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Lo llevamos al presidente y no podia creer el auto.'
                 },
             ]
@@ -119,17 +119,17 @@ let autos = {
             comentarios: [
                 {
                     nombre_usuario: 'Juana',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Increible lo silencioso que es!'
                 },
                 {
                     nombre_usuario: 'Brian',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Pura potencia electrica!'
                 },
                 {
                     nombre_usuario: 'Miguel',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Increible diseño futurista, pero me quedo con los viejos.'
                 },
             ]
@@ -141,17 +141,17 @@ let autos = {
             comentarios: [
                 {
                     nombre_usuario: 'Gonzalo',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Perfecto para la ciudad, ni grande ni chico.'
                 },
                 {
                     nombre_usuario: 'Santos',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'No me gusto la forma del modelo nuevo, me quedo con el modelo anterior.'
                 },
                 {
                     nombre_usuario: 'Milagros',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Tiene un motor muy chico para el tamaño que posee.'
                 },
             ]
@@ -163,17 +163,17 @@ let autos = {
             comentarios: [
                 {
                     nombre_usuario: 'Pilar',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Muy caro para lo que te da, podria comprarme cosas mejores con la misma plata.'
                 },
                 {
                     nombre_usuario: 'Gaston',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Muy bueno, se la re banca, lo meti en el campo y no me dejo nunca.'
                 },
                 {
                     nombre_usuario: 'Marcela',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Ni bien lo saque empezo a hacer ruidos de aca para alla, no lo recomiendo.'
                 },
             ]
@@ -185,17 +185,17 @@ let autos = {
             comentarios: [
                 {
                     nombre_usuario: 'Ricardo',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Tremendo auto, ahorre para comprarlo y no me arrepiento.'
                 },
                 {
                     nombre_usuario: 'Emiliano',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Muy comodo y muy espacioso ademas de un motor potente.'
                 },
                 {
                     nombre_usuario: 'Tomas',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Bastante inestable en curvas, casi me mato en una.'
                 },
             ]
@@ -207,20 +207,30 @@ let autos = {
             comentarios: [
                 {
                     nombre_usuario: 'Manuel',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Increible camioneta!'
                 },
                 {
                     nombre_usuario: 'Sofia',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Si estas buscando seguridad y confort, esta camioneta es para ustedes'
                 },
                 {
                     nombre_usuario: 'Francesca',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/images/user_sin_foto',
                     comentario: 'Muy dificil de estacionar por la ciudad, pero increible camioneta para hacer viajes.'
                 },
             ]
         }
-    ]
+    ],
+    usuario: {
+        email: '',
+        usuario: '',
+        contraseña: '',
+        fecha_nac: '',
+        dni: '',
+        foto_perfil:'',
+    }
 }
+
+module.export = autos
