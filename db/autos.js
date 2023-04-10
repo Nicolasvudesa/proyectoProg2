@@ -32,17 +32,17 @@ let autos = {
                 {
                     nombre_usuario: 'Felipe',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Una locura este auto, lo puse a 250 con limitador y llego tranquilo.'
                 },
                 {
                     nombre_usuario: 'Valentin',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Muy comodo y no se re rompe nada nunca.'
                 },
                 {
                     nombre_usuario: 'Santiago',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Muy caro para lo que es, con esta plata compraba un mejor auto.'
                 },
             ]
         },{
@@ -54,17 +54,17 @@ let autos = {
                 {
                     nombre_usuario: 'Felix',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Lo meti en la puna Argentina y se la banco como un toro.'
                 },
                 {
                     nombre_usuario: 'Santiago',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Una bestia, ademas vuela en la ruta.'
                 },
                 {
                     nombre_usuario: 'Benjamin',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Increible la capacidad que tiene,lo que si, un poco caro.'
                 },
             ]
         },{
@@ -98,17 +98,17 @@ let autos = {
                 {
                     nombre_usuario: 'Julieta',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'El auto mas comodo del mercado.'
                 },
                 {
                     nombre_usuario: 'Pedro',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Carisimo pero tiene un buen andar la verdad.'
                 },
                 {
                     nombre_usuario: 'Lucia',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Lo llevamos al presidente y no podia creer el auto.'
                 },
             ]
         },{
@@ -164,17 +164,17 @@ let autos = {
                 {
                     nombre_usuario: 'Pilar',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Muy caro para lo que te da, podria comprarme cosas mejores con la misma plata.'
                 },
                 {
                     nombre_usuario: 'Gaston',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Muy bueno, se la re banca, lo meti en el campo y no me dejo nunca.'
                 },
                 {
                     nombre_usuario: 'Marcela',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Ni bien lo saque empezo a hacer ruidos de aca para alla, no lo recomiendo.'
                 },
             ]
         },{
@@ -186,17 +186,17 @@ let autos = {
                 {
                     nombre_usuario: 'Ricardo',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Tremendo auto, ahorre para comprarlo y no me arrepiento.'
                 },
                 {
                     nombre_usuario: 'Emiliano',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Muy comodo y muy espacioso ademas de un motor potente.'
                 },
                 {
                     nombre_usuario: 'Tomas',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Bastante inestable en curvas, casi me mato en una.'
                 },
             ]
         },{
