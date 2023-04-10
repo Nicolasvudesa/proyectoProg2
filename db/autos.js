@@ -8,7 +8,7 @@ let autos = {
             comentarios: [
                 {
                     nombre_usuario: 'Nicolas',
-                    foto_perfil_usuario: '',
+                    foto_perfil_usuario: '/ma',
                     comentario: 'Muy buen auto!'
                 },
                 {
