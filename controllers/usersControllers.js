@@ -1,15 +1,15 @@
 const controller = {
     login: function(req,res){
-        res.send("aqui vamos a mandar el login")
+        res.render("login")
     },
     register :  function(req,res){
-        res.send("aqui vamos a mandar el register")
+        res.render("register")
     },
     profile:  function(req,res){
-        res.send("aqui vamos a mandar el profile")
+        res.render("profile")
     },
     edit:  function(req,res){
-        res.send("aqui vamos a mandar el edit")
+        res.render("profile-edit")
     }
 }
 
