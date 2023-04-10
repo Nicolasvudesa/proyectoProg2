@@ -222,5 +222,15 @@ let autos = {
                 },
             ]
         }
-    ]
+    ],
+    usuario: {
+        email: '',
+        usuario: '',
+        contraseña: '',
+        fecha_nac: '',
+        dni: '',
+        foto_perfil:'',
+    }
 }
+
+module.export = autos
