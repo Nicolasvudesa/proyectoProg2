@@ -15,6 +15,7 @@
 	<!-- /Banner -->
 
 	<!-- Novedades -->
+	
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
@@ -22,63 +23,24 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<div class="col-12 col-sm-6 col-lg-3">
+				
 				<section class="product-box">
 					<a href="product.html">
 						<figure class="product-box_image">
-							<img src="/images/productos/Audi_e-tron_GT.jpeg" alt="Audi e-tron">
+							<% for(let i=0; i<productos.length; i++) {%>
+							<img src=<%=productos[i].imagen %> >
 						</figure>
 						<article class="product-box_data">
-							<h2>Audi e-tron</h2>
-							<p>Un gran turismo de hasta 590 hp.</p>
+							<h2><%= productos[i].nombre %></h2>
+							<p><%= productos[i].descripcion %></p>
 							<p>Comentarios: 3</p>
 						</article>
 					</a>
+					<%}%>
 				</section>
 			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="/images/productos/Audi_A4.jpeg" alt="Audi A4">
-						</figure>
-						<article class="product-box_data">
-							<h2>Audi A4</h2>
-							<p>Una berlina premium, del segmento D.</p>
-							<p>Comentarios: 3</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="/images/productos/Audi_A8.jpeg" alt="Audi A8">
-						</figure>
-						<article class="product-box_data">
-							<h2>Audi A8</h2>
-							<p>Una berlina de lujo, del segmento F.</p>
-							<p>Comentarios: 3</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="/images/productos/Audi_Q7.jpeg" alt="Audi Q7">
-						</figure>
-						<article class="product-box_data">
-							<h2>Audi Q7</h2>
-							<p>Un SUV premium de gran tamaño, del segmento E.</p>
-							<p>Comentarios: 3</p>
-						</article>
-					</a>
-				</section>
-			</div>
-		</div>
-	</div>
+			
+			
 	<!-- /Novedades -->
 	<!-- Más comentados -->
 	<div class="container products-wrapper">
@@ -89,6 +51,7 @@
 			<!-- Show the "ultimos" products -->
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
+					
 					<a href="product.html">
 						<figure class="product-box_image">
 							<img src="/images/productos/Audi_A4.jpeg" alt="Audi A4">

@@ -4,7 +4,9 @@ const controller = {
     
     },
     add:  function(req,res){
-        res.render('product-add')
+        res.render('product-add',{
+            usuarioLogueado: true
+        });
 }
 }
 

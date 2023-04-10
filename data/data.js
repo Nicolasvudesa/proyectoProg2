@@ -1,4 +1,4 @@
-let autos = {
+const data = {
     productos: [
         {
             nombre: 'Audi A4',
@@ -233,4 +233,4 @@ let autos = {
     }
 }
 
-module.export = autos
+module.exports = data
