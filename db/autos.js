@@ -9,17 +9,17 @@ let autos = {
                 {
                     nombre_usuario: 'Nicolas',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Muy buen auto!'
                 },
                 {
                     nombre_usuario: 'Joaquin',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Me encanta la variedad de colores en los que viene!'
                 },
                 {
                     nombre_usuario: 'Lucio',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'No quede conforme con el tamaño del baul.'
                 },
             ]
         },
@@ -76,17 +76,17 @@ let autos = {
                 {
                     nombre_usuario: 'Justo',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Increible la potencia que tiene.'
                 },
                 {
                     nombre_usuario: 'Geronimo',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Me costo acostumbrarme al manejo, pero una ves que lo haces, es un lujo!'
                 },
                 {
                     nombre_usuario: 'Santino',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Un auto perfecto si estas buscando lujo, velocidad y confort.'
                 },
             ]
         },{
@@ -120,17 +120,17 @@ let autos = {
                 {
                     nombre_usuario: 'Juana',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Increible lo silencioso que es!'
                 },
                 {
                     nombre_usuario: 'Brian',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Pura potencia electrica!'
                 },
                 {
                     nombre_usuario: 'Miguel',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Increible diseño futurista, pero me quedo con los viejos.'
                 },
             ]
         },{
@@ -142,17 +142,17 @@ let autos = {
                 {
                     nombre_usuario: 'Gonzalo',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Perfecto para la ciudad, ni grande ni chico.'
                 },
                 {
                     nombre_usuario: 'Santos',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'No me gusto la forma del modelo nuevo, me quedo con el modelo anterior.'
                 },
                 {
                     nombre_usuario: 'Milagros',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Tiene un motor muy chico para el tamaño que posee.'
                 },
             ]
         },{
@@ -208,17 +208,17 @@ let autos = {
                 {
                     nombre_usuario: 'Manuel',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Increible camioneta!'
                 },
                 {
                     nombre_usuario: 'Sofia',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Si estas buscando seguridad y confort, esta camioneta es para ustedes'
                 },
                 {
                     nombre_usuario: 'Francesca',
                     foto_perfil_usuario: '',
-                    comentario: ''
+                    comentario: 'Muy dificil de estacionar por la ciudad, pero increible camioneta para hacer viajes.'
                 },
             ]
         }
