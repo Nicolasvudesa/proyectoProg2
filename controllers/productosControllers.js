@@ -1,8 +1,13 @@
+const { usuario, comentarios } = require("../data/data");
 const data = require("../data/data");
 
 const controller = {
     index: function(req,res){
-        res.send('aca mandamos los productos')
+        res.render('product',{
+            usuarioLogueado : true,
+            usuario: data.usuario,
+            comentarios: data.comentarios
+        })
     
     },
     add:  function(req,res){
