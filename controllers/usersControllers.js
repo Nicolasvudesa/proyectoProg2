@@ -1,3 +1,5 @@
+const data = require("../data/data");
+
 const controller = {
     login: function(req,res){
         res.render("login",{
@@ -12,12 +14,14 @@ const controller = {
     },
     profile:  function(req,res){
         res.render("profile",{
-            usuarioLogueado: true
+            usuarioLogueado: true,
+            usuario: data.usuario
         });
     },
     edit:  function(req,res){
         res.render("profile-edit",{
-            usuarioLogueado: false
+            usuarioLogueado: true,
+            usuario: data.usuario
         });
     }
 }

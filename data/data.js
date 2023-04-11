@@ -63,8 +63,8 @@ const data = {
         }
     ],
     usuario: {
-        email: 'audi@gmail.com',
-        usuario: 'audiAr',
+        email: 'hasbulla123@gmail.com',
+        nombre: 'Hasbulla',
         contraseña: 'audiAr',
         fecha_nac: '01/01/2001',
         dni: '12345678',
