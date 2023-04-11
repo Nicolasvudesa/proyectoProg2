@@ -63,8 +63,8 @@ const data = {
         }
     ],
     usuario: {
-        email: 'audi@gmail.com',
-        usuario: 'audiAr',
+        email: 'hasbulla123@gmail.com',
+        nombre: 'Hasbulla',
         contraseña: 'audiAr',
         fecha_nac: '01/01/2001',
         dni: '12345678',
@@ -73,17 +73,17 @@ const data = {
     comentarios: [
         {
             nombre_usuario: 'Nicolas',
-            foto_perfil_usuario: '/images/user_sin_foto',
+            foto_perfil_usuario: '/images/user_sin_foto.jpg',
             comentario: 'Me encanta la variedad de colores!'
         },
         {
             nombre_usuario: 'Joaquin',
-            foto_perfil_usuario: '/images/user_sin_foto',
+            foto_perfil_usuario: '/images/user_sin_foto.jpg',
             comentario: 'Seguridad, confort y velocidad, todo en uno'
         },
         {
             nombre_usuario: 'Lucio',
-            foto_perfil_usuario: '/images/user_sin_foto',
+            foto_perfil_usuario: '/images/user_sin_foto.jpg',
             comentario: 'Me gusta el nuevo diseño!'
         },
     ]
