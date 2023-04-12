@@ -1,5 +1,5 @@
 /*====== Fonts ======*/
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Kanit&display=swap');
 
 
 /*====== Variables ======*/
@@ -11,7 +11,7 @@
   --light-gray: #ebebeb;
   --green: #39b54a;
   --red: #f10b0b;
-  --base-font-family: 'Roboto', sans-serif
+  --base-font-family:'Kanit', sans-serif
 }
 
 
@@ -44,6 +44,8 @@ a {
   display: inline-block;
   text-decoration: none;
   color: inherit;
+  font-family:'Cinzel', serif
+  
 }
 
 figure {
@@ -173,7 +175,7 @@ hr {
 }
 
 .products-title {
-  font-size: 2.4em;
+  font-size: 2.7em;
   font-weight: 400;
   color: white;
 }
@@ -435,6 +437,12 @@ hr {
   display: inline-block;
   font-size: 1.6em;
   margin: 10px 0;
+}
+
+.formularios{
+  color: white;
+  font-size: 1.5em;
+
 }
 
 .form-input {
