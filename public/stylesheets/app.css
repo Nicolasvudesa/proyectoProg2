@@ -10,6 +10,7 @@
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #39b54a;
+  --red: #f10b0b;
   --base-font-family: 'Roboto', sans-serif
 }
 
@@ -274,7 +275,7 @@ hr {
 }
 
 .footer-data i {
-  color: var(--light-blue);
+  color: var(--red);
   font-size: 3.5em;
 }
 
