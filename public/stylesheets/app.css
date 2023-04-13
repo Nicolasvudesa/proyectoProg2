@@ -1,5 +1,5 @@
 /*====== Fonts ======*/
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Cinzel:wght@500&family=Kanit&display=swap');
 
 
 /*====== Variables ======*/
@@ -71,8 +71,13 @@ hr {
 /*====== Main Header ======*/
 
 .main-header {
-  padding: 10px;
+  
+  padding: 5px ;
   background-color: rgb(198, 0, 0);
+}
+
+.imagenlogo{
+  width: 10vw;
 }
 
 .main-header_home-link,
@@ -173,9 +178,10 @@ hr {
 }
 
 .products-title {
-  font-size: 2.7em;
+  font-size: 3em;
   font-weight: 400;
   color: white;
+  font-family:'Chakra Petch', sans-serif;;
 }
 
 .product-box {
