@@ -28,7 +28,7 @@ const data = {
         },{
             nombre: 'Audi e-tron',
             imagen: '/images/productos/Audi_e-tron_Sportback.jpg',
-            descripcion: 'Automóvil 100% eléctrico con una autonomía que ofrece libertad.',
+            descripcion: 'Automóvil 100% eléctrico con una autonomía libertadora.',
             fecha_de_carga: '01/11/2022',
         },{
             nombre: 'Audi e-tron GT',

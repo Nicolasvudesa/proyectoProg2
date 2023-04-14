@@ -173,7 +173,7 @@ hr {
 
 /*====== Products ======*/
 .products-wrapper {
-  margin-top: 30px;
+  margin-top: 10px;
   margin-bottom: 30px;
 }
 
@@ -181,7 +181,7 @@ hr {
   font-size: 3em;
   font-weight: 400;
   color: white;
-  font-family:'Chakra Petch', sans-serif;;
+  font-family:'Chakra Petch', sans-serif;
 }
 
 .product-box {
@@ -222,12 +222,12 @@ hr {
 }
 
 .product-box_data p {
-  font-size: 1.5em;
+  font-size: 1.35em;
   width: 100%;
   color: var(--gray);
   margin: 0;
   height: 0;
-  transition: 300ms;
+  transition: 500ms;
   overflow: hidden;
 }
 
@@ -334,9 +334,16 @@ hr {
   font-size: 2.8em;
 }
 
+.product-detail-editar{
+  padding: 15px 15px 15px 40px;
+  font-size: 2.5em;
+  line-height: 1.5;
+  color: white;
+}
+
 .product-detail-description {
   padding: 15px 15px 15px 40px;
-  font-size: 1.8em;
+  font-size: 2em;
   line-height: 1.5;
 }
 
