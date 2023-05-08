@@ -3,7 +3,7 @@ const data = require("../data/data");
 const controller = {
     login: function(req,res){
         res.render("login",{
-            usuarioLogueado: false
+            usuario: false
         });
 
     },
