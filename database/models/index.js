@@ -41,3 +41,5 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+
+// el db exporta un objeto literal que tiene todos los objetos
