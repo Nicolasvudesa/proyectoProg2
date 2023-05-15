@@ -8,19 +8,19 @@ module.exports = function (sequelize, dataTypes){
     },
 
     nombre:{
-        type: dataTypes.STRING,
+        type: dataTypes.VARCHAR(50),
     },
 
     email:{
-        type: dataTypes.DECIMAL,
+        type: dataTypes.VARCHAR(50),
     },
 
     contraseña:{
-        type: dataTypes.INTEGER,
+        type: dataTypes.VARCHAR(50),
     },
 
     fotoPerfil:{
-        type: dataTypes.DATE,
+        type: dataTypes.VARCHAR(100),
     },
 
     dni:{
@@ -28,13 +28,13 @@ module.exports = function (sequelize, dataTypes){
     },
 
     fecha:{
-        type: dataTypes.INTEGER,
+        type: dataTypes.DATE,
     },
     createdAt:{
-        
+        type: dataTypes.DATE
     },
     updatedAt:{
-        
+        type: dataTypes.DATE
     }};
 
     let config = {
