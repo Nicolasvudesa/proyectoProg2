@@ -7,29 +7,26 @@ module.exports = function (sequelize, dataTypes){
         type: dataTypes.INTEGER,
     },
 
-    title:{
-        type: dataTypes.STRING,
-    },
-
-    rating:{
-        type: dataTypes.DECIMAL,
-    },
-
-    awards:{
+    idPost:{
         type: dataTypes.INTEGER,
     },
 
-    release_date:{
+    idUserComent:{
+        type: dataTypes.INTEGER,
+    },
+
+    comentario:{
+        type: dataTypes.INTEGER,
+    },
+
+    createdAt:{
         type: dataTypes.DATE,
     },
 
-    length:{
-        type: dataTypes.INTEGER,
+    updatedAt:{
+        type: dataTypes.DATE,
     },
-
-    genre_id:{
-        type: dataTypes.INTEGER,
-    }};
+    };
 
     let config = {
         tableName: 'tablaProductos',
