@@ -1,5 +1,5 @@
 module.exports = function (sequelize, dataTypes){
-    let alias = 'Producto';
+    let alias = 'Usuario';
     let col = {
     id:{
         autoIncrement: true,
@@ -7,38 +7,44 @@ module.exports = function (sequelize, dataTypes){
         type: dataTypes.INTEGER,
     },
 
-    title:{
-        type: dataTypes.STRING,
+    nombre:{
+        type: dataTypes.VARCHAR(50),
     },
 
-    rating:{
-        type: dataTypes.DECIMAL,
+    email:{
+        type: dataTypes.VARCHAR(50),
     },
 
-    awards:{
+    contraseña:{
+        type: dataTypes.VARCHAR(50),
+    },
+
+    fotoPerfil:{
+        type: dataTypes.VARCHAR(100),
+    },
+
+    dni:{
         type: dataTypes.INTEGER,
     },
 
-    release_date:{
+    fecha:{
         type: dataTypes.DATE,
     },
-
-    length:{
-        type: dataTypes.INTEGER,
+    createdAt:{
+        type: dataTypes.DATE
     },
-
-    genre_id:{
-        type: dataTypes.INTEGER,
+    updatedAt:{
+        type: dataTypes.DATE
     }};
 
     let config = {
-        tableName: 'tablaProductos',
+        tableName: 'tablaUsuarios',
         timestamps: false, //Si la tabla no tiene los campos created_at y updated_at
-        underscored: true, //Si los nombres de las columnas en la db tienen guiones bajos en lugar de camelCase.,
+        underscored: false, //Si los nombres de las columnas en la db tienen guiones bajos en lugar de camelCase.,
     };
 
-    const Productos = sequelize.define(alias, cols, config);
+    const Usuarios = sequelize.define(alias, cols, config);
 
-    return Productos;
+    return Usuarios;
 
 };
