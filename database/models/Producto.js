@@ -5,33 +5,30 @@ module.exports = function (sequelize, dataTypes){
         unsigned: true,
         autoIncrement: true,
         primaryKey: true,
-        type: dataTypes.INTEGER,
+        type: dataTypes.INTEGER
     },
 
     id_usuario:{
         unsigned: true,
-        type: dataTypes.INTEGER,
+        type: dataTypes.INTEGER
     },
 
     producto:{
         notnull: true,
-        type: dataTypes.VARCHAR(50),
+        type: dataTypes.VARCHAR(50)
     },
 
     descripcion:{
         notnull: true,
-        type: dataTypes.TEXT,
+        type: dataTypes.TEXT
     },
 
     createdAt:{
-        timestampsdefault = CURRENT_TIMESTAMP,
-        type: dataTypes.DATE,
+        type: dataTypes.DATE
     },
 
     updatedAt :{
-        timestampsdefault = CURRENT_TIMESTAMP,
-        onupdate = CURRENT_TIMESTAMP,
-        type: dataTypes.INTEGER,
+        type: dataTypes.DATE
     },
     };
 
