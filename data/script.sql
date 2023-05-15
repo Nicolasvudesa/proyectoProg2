@@ -17,8 +17,8 @@ create table tablaUsuarios(
     
 create table tablaProductos(
 -- nombre       		tipo        			restriccion
-	id_producto			int						unsigned primary key not null auto_increment,
-	id_usuario			int						unsigned,
+	idProducto			int						unsigned primary key not null auto_increment,
+	idUsuario			int						unsigned,
     producto			varchar(50)				not null,
     descripcion			text					not null, 
     createdAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -28,8 +28,8 @@ create table tablaProductos(
 create table tablaComentarios(
 -- nombre       		tipo        			restriccion
 	id					int						unsigned primary key not null auto_increment,
-	id_post				int						unsigned,
-    id_UserComent		int						unsigned,
+	idPost				int						unsigned,
+    idUserComent		int						unsigned,
 	comentario			text					not null,
     createdAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
