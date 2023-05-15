@@ -1,35 +1,39 @@
 module.exports = function (sequelize, dataTypes){
     let alias = 'Producto';
     let col = {
-    id:{
+    id_producto	:{
+        unsigned: true,
         autoIncrement: true,
         primaryKey: true,
         type: dataTypes.INTEGER,
     },
 
-    title:{
-        type: dataTypes.STRING,
-    },
-
-    rating:{
-        type: dataTypes.DECIMAL,
-    },
-
-    awards:{
+    id_usuario:{
+        unsigned: true,
         type: dataTypes.INTEGER,
     },
 
-    release_date:{
+    producto:{
+        notnull: true,
+        type: dataTypes.VARCHAR(50),
+    },
+
+    descripcion:{
+        notnull: true,
+        type: dataTypes.TEXT,
+    },
+
+    createdAt:{
+        timestampsdefault = CURRENT_TIMESTAMP,
         type: dataTypes.DATE,
     },
 
-    length:{
+    updatedAt :{
+        timestampsdefault = CURRENT_TIMESTAMP,
+        onupdate = CURRENT_TIMESTAMP,
         type: dataTypes.INTEGER,
     },
-
-    genre_id:{
-        type: dataTypes.INTEGER,
-    }};
+    };
 
     let config = {
         tableName: 'tablaProductos',
