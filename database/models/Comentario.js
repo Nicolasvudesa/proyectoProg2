@@ -7,34 +7,31 @@ module.exports = function (sequelize, dataTypes){
         type: dataTypes.INTEGER,
     },
 
-    title:{
-        type: dataTypes.STRING,
-    },
-
-    rating:{
-        type: dataTypes.DECIMAL,
-    },
-
-    awards:{
+    idPost:{
         type: dataTypes.INTEGER,
     },
 
-    release_date:{
+    idUserComent:{
+        type: dataTypes.INTEGER,
+    },
+
+    comentario:{
+        type: dataTypes.INTEGER,
+    },
+
+    createdAt:{
         type: dataTypes.DATE,
     },
 
-    length:{
-        type: dataTypes.INTEGER,
+    updatedAt:{
+        type: dataTypes.DATE,
     },
-
-    genre_id:{
-        type: dataTypes.INTEGER,
-    }};
+    };
 
     let config = {
         tableName: 'tablaProductos',
         timestamps: false, //Si la tabla no tiene los campos created_at y updated_at
-        underscored: true, //Si los nombres de las columnas en la db tienen guiones bajos en lugar de camelCase.,
+        underscored: false, //Si los nombres de las columnas en la db tienen guiones bajos en lugar de camelCase.,
     };
 
     const Productos = sequelize.define(alias, cols, config);
