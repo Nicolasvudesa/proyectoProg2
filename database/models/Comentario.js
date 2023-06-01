@@ -1,6 +1,6 @@
 module.exports = function (sequelize, dataTypes){
-    let alias = 'Producto';
-    let col = {
+    let alias = 'Comentario';
+    let cols = {
     id:{
         autoIncrement: true,
         primaryKey: true,
@@ -29,13 +29,18 @@ module.exports = function (sequelize, dataTypes){
     };
 
     let config = {
-        tableName: 'tablaProductos',
+        tableName: 'tablaComentarios',
         timestamps: false, //Si la tabla no tiene los campos created_at y updated_at
-        underscored: false, //Si los nombres de las columnas en la db tienen guiones bajos en lugar de camelCase.,
+        underscored: true, //Si los nombres de las columnas en la db tienen guiones bajos en lugar de camelCase.,
     };
 
-    const Productos = sequelize.define(alias, cols, config);
-
-    return Productos;
+    const Comentario = sequelize.define(alias, cols, config);
+    Comentario.associate = function(models){
+        Comentario.belgonsTo(models,Producto,{
+            as: "tablaProductos",
+            foreginKey: "idComentarios"
+        })
+    }
+    return Comentario;
 
 };

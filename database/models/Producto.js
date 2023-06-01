@@ -1,6 +1,6 @@
 module.exports = function (sequelize, dataTypes){
     let alias = 'Producto';
-    let col = {
+    let cols = {
     idProducto	:{
         unsigned: true,
         autoIncrement: true,
@@ -15,7 +15,7 @@ module.exports = function (sequelize, dataTypes){
 
     producto:{
         notnull: true,
-        type: dataTypes.VARCHAR(50)
+        type: dataTypes.VARCHAR
     },
 
     descripcion:{
@@ -33,23 +33,26 @@ module.exports = function (sequelize, dataTypes){
     };
 
     let config = {
-        tableName: 'tablaProductos',
+        tableName: 'tablaproductos',
         timestamps: false, //Si la tabla no tiene los campos created_at y updated_at
-        underscored: false, //Si los nombres de las columnas en la db tienen guiones bajos en lugar de camelCase.,
+        underscored: true, //Si los nombres de las columnas en la db tienen guiones bajos en lugar de camelCase.,
     };
 
-    const Productos = sequelize.define(alias, cols, config);
+    const Producto = sequelize.define(alias, cols, config);
 
-    Productos.associate = function(modelos) {
-        Productos.belongsToMany(modelos.Usuario, {
-            as: "usuarios",
-            through: "usariosProductos",
-            foreignKey: "idProducto",
-            otherKey: "idUsuario",
-            timestamp: false
+    Producto.associate = function(modelos) {
+        Producto.belongsTo(modelos.Usuarios, {
+            as: "tablaUsuarios",
+            foreignKey: "idUsuario",
+        
         });
+        Producto.hasMany(modelos.Comentario,{
+            as : "tablaComentarios",
+            foreignKey: "idComentarios",
+            timestamps: false
+        })
     }
 
-    return Productos;
+    return Producto;
 
 };
