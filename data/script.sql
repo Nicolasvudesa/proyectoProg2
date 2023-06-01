@@ -22,7 +22,9 @@ create table tablaProductos(
     producto			varchar(50)				not null,
     descripcion			text					not null, 
     createdAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updatedAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updatedAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    idComentarios		int						unsigned,
+    foreign key (idComentarios) references tablaComentarios(id)
     );
     
 create table tablaComentarios(
@@ -42,7 +44,7 @@ insert into tablaUsuarios (nombre, email, contraseña, fotoPerfil, dni, fecha) v
 ('Lucio','Lucio@gmail.com','lucio123', '/images/hasbulla.jpg',  45522173, '2004-02-20'),
 ('Felipe','Felipe@gmail.com','felipe123', '/images/hasbulla.jpg',  42512173, '2000-01-11');
 
-insert into tablaProductos(id_usuario, producto, descripcion) values
+insert into tablaProductos(idUsuario, producto, descripcion) values
 ('1', 'Audi A4', 'Auto'),
 ('2', 'Audi A5', 'Auto'),
 ('2', 'Audi A6', 'Auto'),
@@ -54,7 +56,7 @@ insert into tablaProductos(id_usuario, producto, descripcion) values
 ('3', 'Audi Q3', 'Camioneta'),
 ('4', 'Audi Q4', 'Camioneta');
 
-insert into tablaComentarios (id_userComent, id_post, comentario) values
+insert into tablaComentarios (idUserComent, idPost, comentario) values
 ('1', '1', 'Muy buen auto!'),
 ('2', '1', 'Buen color'),
 ('3', '1', 'Muy comodo'),
