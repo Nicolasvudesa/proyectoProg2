@@ -23,8 +23,7 @@ create table tablaProductos(
     descripcion			text					not null, 
     createdAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    idComentarios		int						unsigned,
-    foreign key (idComentarios) references tablaComentarios(id)
+    idUsuarios		int						unsigned, foreign key (idUsuarios) references tablaUsuarios(id)
     );
     
 create table tablaComentarios(

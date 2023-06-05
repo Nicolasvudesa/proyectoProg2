@@ -13,11 +13,7 @@ module.exports = function (sequelize, dataTypes){
         type: dataTypes.INTEGER
     },
 
-    producto:{
-        notnull: true,
-        type: dataTypes.VARCHAR
-    },
-
+  
     descripcion:{
         notnull: true,
         type: dataTypes.TEXT
@@ -33,7 +29,7 @@ module.exports = function (sequelize, dataTypes){
     };
 
     let config = {
-        tableName: 'tablaproductos',
+        tableName: 'tablaProductos',
         timestamps: false, //Si la tabla no tiene los campos created_at y updated_at
         underscored: true, //Si los nombres de las columnas en la db tienen guiones bajos en lugar de camelCase.,
     };
@@ -41,13 +37,13 @@ module.exports = function (sequelize, dataTypes){
     const Producto = sequelize.define(alias, cols, config);
 
     Producto.associate = function(modelos) {
-        Producto.belongsTo(modelos.Usuarios, {
-            as: "tablaUsuarios",
+        Producto.belongsTo(modelos.Usuario, {
+            as: "usuarios",
             foreignKey: "idUsuario",
         
         });
         Producto.hasMany(modelos.Comentario,{
-            as : "tablaComentarios",
+            as : "comentarios",
             foreignKey: "idComentarios",
             timestamps: false
         })

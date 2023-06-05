@@ -35,8 +35,8 @@ module.exports = function (sequelize, dataTypes){
     };
 
     const Comentario = sequelize.define(alias, cols, config);
-    Comentario.associate = function(models){
-        Comentario.belgonsTo(models,Producto,{
+    Comentario.associate = function (models){
+        Comentario.belongsTo(models.Producto,{
             as: "tablaProductos",
             foreginKey: "idComentarios"
         })
