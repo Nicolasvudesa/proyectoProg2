@@ -18,22 +18,23 @@ create table tablaUsuarios(
 create table tablaProductos(
 -- nombre       		tipo        			restriccion
 	idProducto			int						unsigned primary key not null auto_increment,
-	idUsuario			int						unsigned,
     producto			varchar(50)				not null,
+    imagen              varchar(500)            not null,
     descripcion			text					not null, 
     createdAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    idUsuarios		int						unsigned, foreign key (idUsuarios) references tablaUsuarios(id)
+    idUsuarios			int						unsigned, foreign key (idUsuarios) references tablaUsuarios(id)
     );
     
 create table tablaComentarios(
 -- nombre       		tipo        			restriccion
 	id					int						unsigned primary key not null auto_increment,
-	idPost				int						unsigned,
-    idUserComent		int						unsigned,
+	idPost				int						unsigned, foreign key (idPost) references tablaProductos(idProducto),
+	idUsuarios			int						unsigned, foreign key (idUsuarios) references tablaUsuarios(id),
 	comentario			text					not null,
     createdAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+   
     );
 
 insert into tablaUsuarios (nombre, email, contraseña, fotoPerfil, dni, fecha) values
@@ -43,17 +44,17 @@ insert into tablaUsuarios (nombre, email, contraseña, fotoPerfil, dni, fecha) v
 ('Lucio','Lucio@gmail.com','lucio123', '/images/hasbulla.jpg',  45522173, '2004-02-20'),
 ('Felipe','Felipe@gmail.com','felipe123', '/images/hasbulla.jpg',  42512173, '2000-01-11');
 
-insert into tablaProductos(idUsuario, producto, descripcion) values
-('1', 'Audi A4', 'Auto'),
-('2', 'Audi A5', 'Auto'),
-('2', 'Audi A6', 'Auto'),
-('3', 'Audi A7', 'Auto'),
-('4', 'Audi A8', 'Auto'),
-('5', 'Audi E-tron', 'Auto'),
-('1', 'Audi E-tron GT', 'Auto'),
-('2', 'Audi Q2', 'Camioneta'),
-('3', 'Audi Q3', 'Camioneta'),
-('4', 'Audi Q4', 'Camioneta');
+insert into tablaProductos(idUsuario, producto, imagen, descripcion) values
+('1', 'Audi A4','/images/productos/Audi_A4.jpeg',  'Auto'),
+('2', 'Audi A5','/images/productos/Audi_A5_Coupe.jpeg', 'Auto'),
+('2', 'Audi A6','/images/productos/Audi_A6_Allroad.jpeg', 'Auto'),
+('3', 'Audi A7','/images/productos/Audi_A7_Sportpack.jpeg', 'Auto'),
+('4', 'Audi A8','/images/productos/Audi_A8.jpeg', 'Auto'),
+('5', 'Audi E-tron','/images/productos/Audi_e-tron_GT.jpeg', 'Auto'),
+('1', 'Audi E-tron GT','/images/productos/' 'Auto'),
+('2', 'Audi Q2','/images/productos/', 'Camioneta'),
+('3', 'Audi Q3','/images/productos/', 'Camioneta'),
+('4', 'Audi Q4','/images/productos/', 'Camioneta');
 
 insert into tablaComentarios (idUserComent, idPost, comentario) values
 ('1', '1', 'Muy buen auto!'),

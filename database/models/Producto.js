@@ -8,6 +8,15 @@ module.exports = function (sequelize, dataTypes){
         type: dataTypes.INTEGER
     },
 
+    imagen:{
+        type: dataTypes.STRING,
+    },
+
+    producto:{
+        type:dataTypes.STRING,
+        alowNull: false
+    },
+
     idUsuario:{
         unsigned: true,
         type: dataTypes.INTEGER
@@ -39,12 +48,12 @@ module.exports = function (sequelize, dataTypes){
     Producto.associate = function(modelos) {
         Producto.belongsTo(modelos.Usuario, {
             as: "usuarios",
-            foreignKey: "idUsuario",
+            foreignKey: "idUsuarios",
         
         });
         Producto.hasMany(modelos.Comentario,{
             as : "comentarios",
-            foreignKey: "idComentarios",
+            foreignKey: "idPost",
             timestamps: false
         })
     }

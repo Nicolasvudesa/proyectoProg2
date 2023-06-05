@@ -9,14 +9,17 @@ module.exports = function (sequelize, dataTypes){
 
     nombre:{
         type: dataTypes.STRING,
+        allowNull: false
     },
 
     email:{
         type: dataTypes.STRING,
+        allowNull: false
     },
 
     contraseña:{
         type: dataTypes.STRING,
+        allowNull: false
     },
 
     fotoPerfil:{
@@ -25,10 +28,12 @@ module.exports = function (sequelize, dataTypes){
 
     dni:{
         type: dataTypes.INTEGER,
+        allowNull: false
     },
 
     fecha:{
         type: dataTypes.DATE,
+        allowNull: false
     },
     createdAt:{
         type: dataTypes.DATE
@@ -47,9 +52,13 @@ module.exports = function (sequelize, dataTypes){
 
     Usuarios.associate = function(modelos) {
         Usuarios.hasMany(modelos.Producto, {
-            as: "tablaProductos",
-            foreignKey: "idUsuario",
-        });
+            as: "productos",
+            foreignKey: "idUsuarios",
+        })
+        Usuarios.hasMany(modelos.Comentario, {
+            as: "comentarios",
+            foreignKey: "idUsuarios",
+        })
     }
 
     return Usuarios;
