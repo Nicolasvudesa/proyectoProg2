@@ -4,7 +4,11 @@ const controller = require("../controllers/productosControllers")
 
 
 router.get('/', controller.index)
-router.get("/products")
+router.get("/product")
 router.get("/product-add", controller.add)
 
 module.exports = router;
+/*
+router.get('/create', controller.createForm);
+router.post('/create', controller.save)
+ */

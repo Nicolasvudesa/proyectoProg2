@@ -1,12 +1,19 @@
-const data = require("../data/data")
-const controller = {
+const db = require('../database/models')
+const Producto = db.Producto;
+
+const indexController = {
     index: function(req,res){
-        res.render("index",{
-            productos: data.productos,
-            usuarioLogueado: true,
-            usuario: data.usuario
+        Producto.findAll()
+        .then(function(result){
+
+            return res.render("index",{
+                productos: result, comentarios: result
+            })
         })
+        .catch(function(error){
+            console.log(error)
+        });
     }
 }
 
-module.exports=controller
+module.exports = indexController;
