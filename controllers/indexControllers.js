@@ -19,7 +19,7 @@ const indexController = {
     
         Producto.findByPk(id)
         .then(function(result) {
-          return res.render('prodcut', {
+          return res.render('product', {
             productos: result
           })
         })
@@ -29,7 +29,7 @@ const indexController = {
     
       },
     
-      resultado: (req, res) =>{
+    resultado: (req, res) =>{
         let busqueda = req.query.product;
     
         Producto.findAll(

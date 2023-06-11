@@ -22,7 +22,6 @@ module.exports = function (sequelize, dataTypes){
         type: dataTypes.INTEGER
     },
 
-  
     descripcion:{
         notnull: true,
         type: dataTypes.TEXT
@@ -49,7 +48,6 @@ module.exports = function (sequelize, dataTypes){
         Producto.belongsTo(models.Usuario, {
             as: "usuarios",
             foreignKey: "idUsuarios",
-        
         });
         Producto.hasMany(models.Comentario,{
             as : "comentarios",
