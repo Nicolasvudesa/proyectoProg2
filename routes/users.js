@@ -4,7 +4,7 @@ const controller = require("../controllers/usersControllers")
 
 /* GET users listing. */
 router.get('/login', controller.mostrarLogin)
-router.get('/loginUsuario', controller.login)
+router.get('/login', controller.login)
 router.get('/logout', controller.logout); 
 router.get('/registrate', controller.registro);
 router.post('/guardar', controller.guardar);
