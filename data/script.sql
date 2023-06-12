@@ -14,34 +14,24 @@ create table tablaUsuarios(
     createdAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     );
-  
-  create table tablaComentarios(
--- nombre       		tipo        			restriccion
-	id					int						unsigned primary key not null auto_increment,
-	comentario			text					not null,
-    createdAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updatedAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    idProducto			int						unsigned, foreign key (idProducto) references tablaProductos(id),
-    idUsuario			int						unsigned, foreign key (idUsuario) references tablaUsuarios(id)
-    );
-  
-create table tablaProductos(
--- nombre       		tipo        			restriccion
-	id			        int						unsigned primary key not null auto_increment,
-    producto			varchar(50)				not null,
-    descripcion			text					not null, 
-    createdAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updatedAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    imagen				varchar(100),
-    idUsuario			int						unsigned, foreign key (idUsuario) references tablaUsuarios(id)
-    );
-
-insert into tablaUsuarios (nombre, email, contraseña, fotoPerfil, dni, fecha) values
+    
+insert into tablaUsuarios (nombre, email, clave, fotoPerfil, dni, fecha) values
 ('Nicolas', 'Nicolas@gmail.com', 'nicolas123', '/images/hasbulla.jpg', 43499046, '2001-07-11'),
 ('Lucas', 'Lucas@gmail.com', 'lucas123', '/images/hasbulla.jpg',  45201858, '2003-11-4'),
 ('Joaquin','Joaquin@gmail.com','joaquin123', '/images/hasbulla.jpg',  43582273, '2001-09-13'),
 ('Lucio','Lucio@gmail.com','lucio123', '/images/hasbulla.jpg',  45522173, '2004-02-20'),
 ('Felipe','Felipe@gmail.com','felipe123', '/images/hasbulla.jpg',  42512173, '2000-01-11');
+  
+create table tablaProductos(
+-- nombre       		tipo        			restriccion
+	id			        int						unsigned primary key not null auto_increment,
+    idUsuario			int						unsigned, foreign key (idUsuario) references tablaUsuarios(id),
+    producto			varchar(50)				not null,
+    descripcion			text					not null, 
+    createdAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    imagen				varchar(100)
+    );
 
 insert into tablaProductos(idUsuario, producto, descripcion) values
 ('1', 'Audi A4', 'Auto'),
@@ -54,8 +44,18 @@ insert into tablaProductos(idUsuario, producto, descripcion) values
 ('2', 'Audi Q2', 'Camioneta'),
 ('3', 'Audi Q3', 'Camioneta'),
 ('4', 'Audi Q4', 'Camioneta');
-
-insert into tablaComentarios (idUserComent, idPost, comentario) values
+  
+  create table tablaComentarios(
+-- nombre       		tipo        			restriccion
+	id					int						unsigned primary key not null auto_increment,
+    idUsuario			int						unsigned, foreign key (idUsuario) references tablaUsuarios(id),
+    idProducto			int						unsigned, foreign key (idProducto) references tablaProductos(id),
+	comentario			text					not null,
+    createdAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    );
+    
+insert into tablaComentarios (idUsuario, idProducto, comentario) values
 ('1', '1', 'Muy buen auto!'),
 ('2', '1', 'Buen color'),
 ('3', '1', 'Muy comodo'),
@@ -95,4 +95,4 @@ insert into tablaComentarios (idUserComent, idPost, comentario) values
 ('2', '10', 'Muy buen auto!'),
 ('3', '10', 'Velocidad pura'),
 ('4', '10', 'Muy comodo'),
-('5', '10', 'Calidad y seguridad, todo en uno')
+('5', '10', 'Calidad y seguridad, todo en uno');
