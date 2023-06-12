@@ -7,6 +7,14 @@ module.exports = function (sequelize, dataTypes){
         type: dataTypes.INTEGER,
     },
 
+    idUsuario:{
+        type: dataTypes.INTEGER,
+    },
+
+    idProducto:{
+        type: dataTypes.INTEGER,
+    },
+
     comentario:{
         type: dataTypes.INTEGER,
     },
@@ -17,14 +25,6 @@ module.exports = function (sequelize, dataTypes){
 
     updatedAt:{
         type: dataTypes.DATE,
-    },
-
-    idProducto:{
-        type: dataTypes.INTEGER,
-    },
-
-    idUsuario:{
-        type: dataTypes.INTEGER,
     },
 
     };

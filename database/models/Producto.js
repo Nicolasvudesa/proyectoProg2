@@ -8,6 +8,11 @@ module.exports = function (sequelize, dataTypes){
         type: dataTypes.INTEGER
     },
 
+    idUsuario:{
+        unsigned: true,
+        type: dataTypes.INTEGER
+    },
+
     producto:{
         type:dataTypes.STRING,
         alowNull: false
@@ -30,10 +35,6 @@ module.exports = function (sequelize, dataTypes){
         type: dataTypes.STRING,
     },
 
-    idUsuario:{
-        unsigned: true,
-        type: dataTypes.INTEGER
-    },
 
     };
 
