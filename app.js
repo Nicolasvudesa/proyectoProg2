@@ -3,10 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+let session = require('express-session')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 let productosRouter = require ('./routes/products');
+let registroRouter = require('./routes/registro')
+let loginRouter = require('./routes/login')
 
 var app = express();
 
@@ -20,9 +23,46 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session(
+  {
+    secret:'myApp',
+    saveUninitialized: true,
+    resave: false
+  }
+));
+
+app.use(function(req, res, next){
+  if (req.session.user != undefined){
+      res.locals.user = req.session.user
+      return next();
+    } 
+    return next();
+  }
+)
+
+app.use(function(req, res, next){
+  
+  if (req.cookies.userId != undefined && req.session.user == undefined){
+    let idUsuarioEnCookie = req.cookies.userId;
+
+    db.Usuario.findByPk(idUsuarioEnCookie)
+    .then((user)=>{
+      req.session.user = user.dataValues
+      res.locals.user = user.dataValues
+      return next();
+    }).catch((err)=>{
+      console.log(err)
+    });
+  } else{
+    return next()
+  }
+  
+})
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productosRouter);
+app.use('/registro', registroRouter)
+app.use('login', loginRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
