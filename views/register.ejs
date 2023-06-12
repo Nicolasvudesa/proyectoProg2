@@ -14,7 +14,10 @@
         </div>
 <section class = "formularios">
 
-    <form action="/users/login" method="GET">
+    <form action="/users/guardar" method="POST">
+        <% if (locals.error) {%>
+            <p style="color: red"><%= error.message%></p> 
+        <% } %>
         <div>
             <label>Foto de perfil</label>
             <input type="file" id="imagen" name="foto">

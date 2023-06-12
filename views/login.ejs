@@ -10,10 +10,12 @@
 <div class="container products-wrapper">
     <div class="row">
         <div class="col-12">
-            <h2 class="products-title">Ingresar</h2>
+            <h2 class="products-title">Ingresar <% if (locals.error) {%>
+                <p style="color: red"> <%= error.message%>  </p> 
+            <% } %></h2>
         </div>
 <section class = "formularios">
-<form action="/users/profile" method="GET">
+<form action="/users/loginUsuario" method="POST">
 <div>
     <label>Usuario:</label>
     <input type="text" name="usuario" value="">
