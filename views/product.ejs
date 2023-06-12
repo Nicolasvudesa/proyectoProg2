@@ -1,7 +1,11 @@
 <%- include("./partials/head") %>
 
 
-<%- include("./partials/header") %>
+<% if (locals.user != undefined) {%>
+	<%- include("./partials/headerLogueado") %> 
+<% } else {%>
+	<%- include("./partials/headerNoLogueado") %>
+<% } %>
 <!-- product detail -->
 <div class="container products-wrapper">
 	<div class="d-flex align-items-center">
