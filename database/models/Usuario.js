@@ -17,7 +17,7 @@ module.exports = function (sequelize, dataTypes){
         allowNull: false
     },
 
-    contraseña:{
+    clave:{
         type: dataTypes.STRING,
         allowNull: false
     },
@@ -35,9 +35,11 @@ module.exports = function (sequelize, dataTypes){
         type: dataTypes.DATE,
         allowNull: false
     },
+
     createdAt:{
         type: dataTypes.DATE
     },
+
     updatedAt:{
         type: dataTypes.DATE
     }};
@@ -53,11 +55,11 @@ module.exports = function (sequelize, dataTypes){
     Usuarios.associate = function(models) {
         Usuarios.hasMany(models.Producto, {
             as: "productos",
-            foreignKey: "idUsuarios",
+            foreignKey: "idUsuario",
         })
         Usuarios.hasMany(models.Comentario, {
             as: "comentarios",
-            foreignKey: "idUsuarios",
+            foreignKey: "idUsuario",
         })
     }
 
