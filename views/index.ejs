@@ -28,14 +28,14 @@
 			<% for(let i=0; i<productos.length; i++) {%>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/products">
+					<a href="/products/detalleProductos/<%=productos[i].id %>">
 						<figure class="product-box_image">
 							<img src= <%=productos[i].imagen %> >
 						</figure>
 						<article class="product-box_data">
 							<h2><%= productos[i].producto %></h2>
 							<p><%= productos[i].descripcion %></p>
-							<p>Comentarios: 3</p>
+							<p>Dueño:</p> <a href="/users/profile"></a> <%= productos[i].nombre.email
 						</article>
 					</a>
 				</section>
