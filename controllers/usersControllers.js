@@ -42,7 +42,7 @@ const controller = {
                     res.cookie('userId', result.id, { maxAge: 1000 * 60 * 15000 });
                 }
                 
-                return res.redirect('/')
+                return res.redirect('/products/all')
 
             } else {
                 error.message = "Contraseña incorrecta."
@@ -60,7 +60,7 @@ const controller = {
             
             req.session.destroy();
             res.clearCookie('userId')
-            return res.redirect('/');
+            return res.redirect('/users/login');
         },
         registro : function(req, res) {
             res.render('register', {
