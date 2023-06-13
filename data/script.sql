@@ -28,22 +28,22 @@ create table tablaProductos(
     idUsuario			int						unsigned, foreign key (idUsuario) references tablaUsuarios(id),
     producto			varchar(50)				not null,
     descripcion			text					not null, 
+    imagen				varchar(100),
     createdAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updatedAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    imagen				varchar(100)
+    updatedAt 									TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     );
 
-insert into tablaProductos(idUsuario, producto, descripcion) values
-('1', 'Audi A4', 'Auto'),
-('2', 'Audi A5', 'Auto'),
-('2', 'Audi A6', 'Auto'),
-('3', 'Audi A7', 'Auto'),
-('4', 'Audi A8', 'Auto'),
-('5', 'Audi E-tron', 'Auto'),
-('1', 'Audi E-tron GT', 'Auto'),
-('2', 'Audi Q2', 'Camioneta'),
-('3', 'Audi Q3', 'Camioneta'),
-('4', 'Audi Q4', 'Camioneta');
+insert into tablaProductos(idUsuario, producto, descripcion, imagen) values
+('1', 'Audi A4', 'Auto', '/images/productos/Audi_A4.jpeg' ),
+('2', 'Audi A5', 'Auto', '/images/productos/Audi_A5_Coupe.jpeg'),
+('2', 'Audi A6', 'Auto', '/images/productos/Audi_A6_Allroad.jpeg'),
+('3', 'Audi A7', 'Auto', '/images/productos/Audi_A7_Sportpack.jpeg'),
+('4', 'Audi A8', 'Auto', '/images/productos/Audi_A8.jpeg'),
+('5', 'Audi E-tron', 'Auto', '/images/productos/Audi_e-tron_GT.jpeg'),
+('1', 'Audi E-tron GT', 'Auto', '/images/productos/Audi_e-tron_Sportback.jpg'),
+('2', 'Audi Q2', 'Camioneta', '/images/productos/Audi_Q2.jpeg'),
+('3', 'Audi Q3', 'Camioneta', '/images/productos/Audi_Q3.jpeg'),
+('4', 'Audi Q4', 'Camioneta', '/images/productos/Audi_Q5.jpeg');
   
   create table tablaComentarios(
 -- nombre       		tipo        			restriccion

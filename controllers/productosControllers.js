@@ -41,14 +41,14 @@ const controller = {
 
       guardarForm: (req, res) => {
         let info = req.body;
-        info.idUsuario = req.session.user.id
-          productos.create(info)
+        console.log(info) 
+        productos.create(info)
           .then((result) => {
-            return res.redirect("/products/all");
+            return res.redirect('/')
+          }).catch((error) => {
+            console.log(error)
           })
-          .catch((error) => {
-            console.log(error);
-          });
+        
       },
 
     index: function(req,res){
