@@ -7,7 +7,7 @@ create table tablaUsuarios(
 	id					int						unsigned primary key not null auto_increment,
     nombre				varchar(50)				not null,
 	email				varchar(50)				not null unique,
-    clave				varchar(50)				not null, 
+    clave				varchar(500)		not null, 
     fotoPerfil			varchar(100),
     dni					int						not null unique,
     fecha				date					not null,

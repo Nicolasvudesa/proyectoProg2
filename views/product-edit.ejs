@@ -1,0 +1,45 @@
+<%- include("./partials/head") %>
+
+<!-- Header -->
+<% if (locals.user != undefined) {%>
+    <%- include("./partials/headerLogueado") %> 
+<% } else {%>
+    <%- include("./partials/headerNoLogueado") %>
+<% } %>
+<div class="container products-wrapper">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="products-title">Editar productos</h2>
+        </div>
+<section class = "formularios">
+
+    <form action= "/products/editar/id/<%=producto.id%>" method="POST">
+        <div>
+            <label>Imagen del producto</label>
+            <input type="text" id="foto" name="foto" value="<%= producto.imagen %>">
+           
+        </div>
+
+        <div>
+            <label>Nombre del producto</label>
+            <input type="name" name="producto" value="<%= producto.producto %>">
+        </div>
+
+        <div>
+            <label>Descripcion:</label>
+            <input type="text" name="descripcion" value="<%= producto.descripcion %>">
+        </div>
+
+		<div>
+			<label>Fecha de carga:</label>
+			<input type="date" name="fecha" id="fecha" value="<%= producto.createdAt %>">
+		</div>
+		<div>
+			<input type="submit" value="Guardar">
+		</div>
+      
+		
+    </form>
+</section>
+
+<%- include("./partials/footer") %>

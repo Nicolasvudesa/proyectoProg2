@@ -29,6 +29,7 @@ const controller = {
 
           .catch(function (error) {
             console.log(error);
+          });
           })
       },
 
@@ -39,13 +40,46 @@ const controller = {
       guardarForm: (req, res) => {
         let info = req.body;
         console.log(info) 
-        modeloProductos.create(info)
+        modeloProducto.create(info)
           .then((result) => {
             return res.redirect('/')
           }).catch((error) => {
             console.log(error)
           })
         
+      },
+
+      editar: (req,res) => {
+
+        let id= req.params.id;
+
+        modeloProducto.findByPk(id)
+        .then((result) => {
+            console.log(result);
+              return res.render("product-edit", {producto:result})
+        })
+
+        .catch((error) => {
+          console.log(error)
+        })
+      },
+
+      guardarEdit: (req,res) =>{
+        let id= req.params.id;
+        let info= req.body;
+
+        modeloProducto.update(info, {
+          where: [{id:id}]
+        })
+
+        .then((result) => {
+          return res.redirect("/products/id/" + id)
+        })
+
+        .catch((error) => {
+          console.log(error);
+        });
+    
       },
 
     index: function(req,res){
