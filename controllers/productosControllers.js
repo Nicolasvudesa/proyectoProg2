@@ -29,7 +29,7 @@ const controller = {
 
           .catch(function (error) {
             console.log(error);
-          });*/
+          })
       },
 
       agregarForm: (req, res) => {
@@ -39,7 +39,7 @@ const controller = {
       guardarForm: (req, res) => {
         let info = req.body;
         console.log(info) 
-        productos.create(info)
+        modeloProductos.create(info)
           .then((result) => {
             return res.redirect('/')
           }).catch((error) => {
@@ -67,6 +67,7 @@ const controller = {
 }
 
 module.exports = controller
+
 /***
 createForm: (req,res) => {
     return res.render('product-add', {usuarioLogueado: true, {usuario: "messi"}})
