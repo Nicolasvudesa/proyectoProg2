@@ -15,8 +15,8 @@
 <section class = "formularios">
 
     <form action="/users/registrate" method="POST">
-        <% if (locals.error) {%>
-            <p style="color: red"><%= error.message%></p> 
+        <% if (locals.errors) {%>
+            <p style="color: red"><%= errors.message%></p> 
         <% } %>
         <div>
             <label>Foto de perfil</label>

@@ -29,7 +29,7 @@ const controller = {
 
           .catch(function (error) {
             console.log(error);
-          });
+          });*/
       },
 
       agregarForm: (req, res) => {
