@@ -39,13 +39,28 @@ const controller = {
       guardarForm: (req, res) => {
         let info = req.body;
         console.log(info) 
-        productos.create(info)
+        modeloProducto.create(info)
           .then((result) => {
             return res.redirect('/')
           }).catch((error) => {
             console.log(error)
           })
         
+      },
+
+      editar: (req,res) => {
+
+        let id= req.params.id;
+
+        modeloProducto.findByPk(id)
+        .then((result) => {
+            console.log(result);
+              return res.render("product-edit", {modeloProducto:result})
+        })
+
+        .catch((error) => {
+          console.log(error)
+        })
       },
 
     index: function(req,res){

@@ -9,11 +9,12 @@ router.get('/id/:id', controller.detalle);
 router.get('/agregar', controller.agregarForm);
 router.post('/agregar', controller.guardarForm);
 
+router.get('/editar/id/:id',controller.editar); 
 
 
-router.get('/', controller.index)
-router.get("/product")
-router.get("/product-add", controller.add)
+
+
+
 
 module.exports = router;
 /*

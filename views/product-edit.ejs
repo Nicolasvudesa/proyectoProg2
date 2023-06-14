@@ -1,0 +1,45 @@
+<%- include("./partials/head") %>
+
+<!-- Header -->
+<% if (locals.user != undefined) {%>
+    <%- include("./partials/headerLogueado") %> 
+<% } else {%>
+    <%- include("./partials/headerNoLogueado") %>
+<% } %>
+<div class="container products-wrapper">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="products-title">Agregar productos</h2>
+        </div>
+<section class = "formularios">
+
+    <form action="/products/agregar" method="POST">
+        <div>
+            <label>Imagen del producto</label>
+            <input type="text" id="foto" name="foto">
+           
+        </div>
+
+        <div>
+            <label>Nombre del producto</label>
+            <input type="name" name="producto" value="">
+        </div>
+
+        <div>
+            <label>Descripcion:</label>
+            <input type="text" name="descripcion" value="">
+        </div>
+
+		<div>
+			<label>Fecha de carga:</label>
+			<input type="date" name="fecha" id="fecha">
+		</div>
+		<div>
+			<input type="submit" value="enviar">
+		</div>
+      
+		
+    </form>
+</section>
+
+<%- include("./partials/footer") %>
