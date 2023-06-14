@@ -6,14 +6,17 @@
 <% } else {%>
     <%- include("./partials/headerNoLogueado") %>
 <% } %>
+
 <div class="container products-wrapper">
     <div class="row">
         <div class="col-12">
             <h2 class="products-title">Agregar productos</h2>
         </div>
+
 <section class = "formularios">
 
     <form action="/products/agregar" method="POST">
+
         <div>
             <label>Imagen del producto</label>
             <input type="text" id="foto" name="foto">
@@ -34,12 +37,13 @@
 			<label>Fecha de carga:</label>
 			<input type="date" name="fecha" id="fecha">
 		</div>
+        
 		<div>
 			<input type="submit" value="enviar">
 		</div>
       
-		
     </form>
+
 </section>
 
 <%- include("./partials/footer") %>

@@ -6,13 +6,14 @@
 <% } else {%>
 	<%- include("./partials/headerNoLogueado") %>
 <% } %>
+
 <!-- product detail -->
 <div class="container products-wrapper">
 	<div class="d-flex align-items-center">
 		<h2 class="products-title"> <%= producto.producto %></h2> 
 		
 		<p class="product-detail-editar">
-			<a href="/products/editar/id/<%=producto.id %>">Editar</a>
+			<a href="/products/editar/<%=producto.id %>">Editar</a>
 		</p>
 	</div>
 	<div class="product-detail">
@@ -30,7 +31,7 @@
 						<img src= <%= producto.comentarios[i].fotoPerfil %> alt="">
 						<div class="data">
 							<p class="user">
-							<strong> <a href="/users/profile"> <%= producto.comentarios[i].idUsuario %>: </a> </strong>
+							<strong> <a href="/users/profile/<%= producto.comentarios[i].idUsuario %>"> <%= producto.comentarios[i].idUsuario %>: </a> </strong>
 							  <%= producto.comentarios[i].comentario %></p>
 						</div>
 					</article>

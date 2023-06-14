@@ -1,4 +1,4 @@
-<% include("./partials/head") %>
+<%- include("./partials/head") %>
 
 <!-- Header -->
 <% if (locals.user != undefined) {%>
@@ -23,8 +23,8 @@
 			</div>
 			<div>
 				<ul class="">
-					<li> <%= usuario.email %></li>
-					<li>8 productos</li>
+					<li><%= usuario.nombre %></li>
+					<li>usuario.productos.lenth</li>
 					<li>200 seguidores</li>
 					<li>300 comentarios</li>
 				</ul>
@@ -34,18 +34,18 @@
 </section>
 
 /*
-<!--div class="container products-wrapper">
+<div class="container products-wrapper">
 	<div class="row">
 		<div class="col-12">
 			<h2 class="products-title">Productos publicados:</h2>
 		</div>
-		
+		<!-- Show the "ultimos" products -->
 		<% for(let i=0; i<=3 ; i++) {%>
 		<div class="col-12 col-sm-6 col-lg-3">
 			<section class="product-box">
 				<a href="/products">
 					<figure class="product-box_image">
-						<img src= <%=usuario.productos[i].imagen %> >
+						<img src= <%=%> >
 					</figure>
 					<article class="product-box_data">
 						<h2><%= usuario.productos[i].producto %></h2>
@@ -56,4 +56,8 @@
 			</section>
 		</div>
 		<%}%>
-<%- include("./partials/footer") %-->
+	</div>
+</div>		
+
+<%- include("./partials/footer") %>
+*/

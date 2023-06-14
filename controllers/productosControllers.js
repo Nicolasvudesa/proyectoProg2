@@ -3,6 +3,7 @@ const modeloProducto = db.Producto; //Alias del modelo
 
 
 const controller = {
+
     findAll: (req, res) => {
         let filtrado = {
           order: [['createdAT', 'DESC']],
@@ -33,14 +34,21 @@ const controller = {
 
          },
 
-      agregarForm: (req, res) => {
+      agregarProducto: (req, res) => {
         return res.render("product-add");
       },
 
-      guardarForm: (req, res) => {
-        let info = req.body;
-        console.log(info) 
+      guardarProducto: (req, res) => {
+        let info= {
+         idUsuario: req.session.usuarioLogueado,
+         producto: req.body.producto,
+         descripcion: req.body.descripcion,
+         imagen: req.body.foto,
+         createdAt: req.body.fecha
+        }
+
         modeloProducto.create(info)
+
           .then((result) => {
             return res.redirect('/')
           }).catch((error) => {
