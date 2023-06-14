@@ -55,12 +55,30 @@ const controller = {
         modeloProducto.findByPk(id)
         .then((result) => {
             console.log(result);
-              return res.render("product-edit", {modeloProducto:result})
+              return res.render("product-edit", {producto:result})
         })
 
         .catch((error) => {
           console.log(error)
         })
+      },
+
+      guardarEdit: (req,res) =>{
+        let id= req.params.id;
+        let info= req.body;
+
+        modeloProducto.update(info, {
+          where: [{id:id}]
+        })
+
+        .then((result) => {
+          return res.redirect("/products/id/" + id)
+        })
+
+        .catch((error) => {
+          console.log(error);
+        });
+    
       },
 
     index: function(req,res){

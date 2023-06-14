@@ -10,6 +10,8 @@ router.get('/agregar', controller.agregarForm);
 router.post('/agregar', controller.guardarForm);
 
 router.get('/editar/id/:id',controller.editar); 
+router.post('/editar/id/:id',controller.guardarEdit); 
+
 
 
 
