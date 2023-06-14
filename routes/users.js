@@ -12,7 +12,7 @@ router.post('/registrate', controller.guardar);
 
 
 
-router.get('/profile', controller.profile)
+router.get('/profile/:id', controller.profile)
 
 router.get('/profile-edit', controller.edit)
 

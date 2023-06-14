@@ -1,5 +1,5 @@
 const db = require('../database/models')
-const productos = db.Producto; //Alias del modelo
+const modeloProducto = db.Producto; //Alias del modelo
 
 
 const controller = {
@@ -8,7 +8,7 @@ const controller = {
           order: [['createdAT', 'DESC']],
           include: [{association: 'comentarios'},{association: 'usuarios'}]
         };
-        productos.findAll(filtrado)
+        modeloProducto.findAll(filtrado)
           .then(function (resultado) {
             
             return res.render("products", { productos: resultado });
@@ -18,18 +18,15 @@ const controller = {
     
       },
 
-      detalle: (req, res) => {
-        let id = req.params.id; 
-        let relacion =  {
-          include: { association: "comentarios",
-          include: {association: "usuarios"} }
-        };
-        productos.findByPk(id, relacion)
+      detalle: function(req, res){
+
+        modeloProducto.findByPk(req.params.id,  
+          {include: [{ association: "comentarios"}, {association: "usuarios"}]})
+
           .then(function (result) {
-            return res.render("products", {
-              productos: result,
-            });
+            return res.render("product", {producto: result});
           })
+
           .catch(function (error) {
             console.log(error);
           });

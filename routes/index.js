@@ -5,6 +5,9 @@ const indexController = require("../controllers/indexControllers")
 
 
 router.get('/', indexController.index)
+
 router.get('/id/:id', indexController.show)
+
 router.get('/busqueda', indexController.resultado)
+
 module.exports = router;

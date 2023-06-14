@@ -1,24 +1,30 @@
 const db = require('../database/models')
-const Producto = db.Producto;
 
+const modeloProducto = db.Producto;
 
 const indexController = {
-    index: function(req,res){
-        Producto.findAll()
-        .then(function(result){
 
-            return res.render("index",{
-                productos: result, comentarios: result
-            })
+    index: function(req,res){
+
+        modeloProducto.findAll({
+          include: [{association: 'usuarios'}],
+          limit: 16,
+          order: [['createdAT', 'DESC']]
         })
+
+        .then(function(result){
+          return res.render("index",{productos: result})
+         })
+
         .catch(function(error){
             console.log(error)
-        });
+         });
     },
-    show: (req, res) => {
+    
+    show: function(req, res){
         let id = req.params.id; 
     
-        Producto.findByPk(id)
+        modeloProducto.findByPk(id)
         .then(function(result) {
           return res.render('product', {
             productos: result
@@ -30,10 +36,10 @@ const indexController = {
     
       },
     
-    resultado: (req, res) =>{
+    resultado: function(req, res) {
         let busqueda = req.query.product;
     
-        Producto.findAll(
+        modeloProducto.findAll(
           {
             where: [
               /* { title: busqueda} */

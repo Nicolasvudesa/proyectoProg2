@@ -19,7 +19,7 @@ const data = {
             fecha_de_carga: '01/03/2022',
             id:3
         },{
-            nombre: 'Audi A7 Sportpack',
+            nombre: 'Audi A7',
             imagen: '/images/productos/Audi_A7_Sportpack.jpeg',
             descripcion: 'Una berlina del segmento del gran sedán de lujo.',
             fecha_de_carga: '01/04/2022',
@@ -60,18 +60,6 @@ const data = {
             descripcion: 'Un todocamino mediano, del segmento C.',
             fecha_de_carga: '01/09/2022',
             id:10
-        },{
-            nombre: 'Audi Q7',
-            imagen: '/images/productos/Audi_Q7.jpeg',
-            descripcion: 'Un SUV premium de gran tamaño, del segmento E.',
-            fecha_de_carga: '01/10/2022',
-            id:11
-        },{
-            nombre: 'Audi RS Q8',
-            imagen: '/images/productos/Audi_RS_Q8.jpg',
-            descripcion: 'Es un SUV coupé, del segmento E.',
-            fecha_de_carga: '01/12/2022',
-            id:12
         }
     ],
     usuario: {
