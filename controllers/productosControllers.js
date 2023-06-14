@@ -4,6 +4,7 @@ const modeloProducto = db.Producto; //Alias del modelo
 let op = db.Sequelize.Op
 
 const controller = {
+
     findAll: (req, res) => {
         let filtrado = {
           order: [['createdAT', 'DESC']],
@@ -28,22 +29,63 @@ const controller = {
           .catch(function (error) {
             console.log(error);
           });
-      },
 
-      agregarForm: (req, res) => {
+         },
+
+      agregarProducto: (req, res) => {
         return res.render("product-add");
       },
 
-      guardarForm: (req, res) => {
-        let info = req.body;
-        console.log(info) 
-        productos.create(info)
+      guardarProducto: (req, res) => {
+        let info= {
+         idUsuario: req.session.usuarioLogueado,
+         producto: req.body.producto,
+         descripcion: req.body.descripcion,
+         imagen: req.body.foto,
+         createdAt: req.body.fecha
+        }
+
+        modeloProducto.create(info)
+
           .then((result) => {
             return res.redirect('/')
           }).catch((error) => {
             console.log(error)
           })
         
+      },
+
+      editar: (req,res) => {
+
+        let id= req.params.id;
+
+        modeloProducto.findByPk(id)
+        .then((result) => {
+            console.log(result);
+              return res.render("product-edit", {producto:result})
+        })
+
+        .catch((error) => {
+          console.log(error)
+        })
+      },
+
+      guardarEdit: (req,res) =>{
+        let id= req.params.id;
+        let info= req.body;
+
+        modeloProducto.update(info, {
+          where: [{id:id}]
+        })
+
+        .then((result) => {
+          return res.redirect("/products/id/" + id)
+        })
+
+        .catch((error) => {
+          console.log(error);
+        });
+    
       },
 
     index: function(req,res){
@@ -83,6 +125,7 @@ const controller = {
 }
 
 module.exports = controller
+
 /***
 createForm: (req,res) => {
     return res.render('product-add', {usuarioLogueado: true, {usuario: "messi"}})

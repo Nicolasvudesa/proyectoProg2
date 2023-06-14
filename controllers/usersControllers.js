@@ -98,18 +98,18 @@ const controller = {
         },
     
     profile:  function(req,res){
-        user.findByPk(req.params.id,  
-            {include: [{ association: "productos"}]})
+
+        user.findByPk(req.params.id,  {include: [{ association: "productos"}]})
 
             .then(function (result) {
                 return res.render("profile", {usuario: result, usuarioLogueado: true});
               })
     
-              .catch(function (error) {
+            .catch(function (error) {
                 console.log(error);
-              });
-    },
-    
+            });
+        },
+
     edit:  function(req,res){
         res.render("profile-edit",{
             usuarioLogueado: true,
