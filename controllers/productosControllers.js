@@ -19,20 +19,45 @@ const controller = {
       },
 
       detalle: (req, res) => {
-        let id = req.params.id; 
+        let id = req.params.id;
+
+
+
+        
+        let rel = {
+          include: [{association: "comentarios"},
+          
+        ]
+        }
+    
+    
+       
+    
+        
+        productos.findByPk(id, rel)
+          .then(function (result) {
+            console.log(result)
+            return res.render('product', {
+              productos: result
+            })
+          })
+          .catch(function (error) {
+            console.log(error)
+          });
+        /*let id = req.params.id; 
         let relacion =  {
           include: { association: "comentarios",
           include: {association: "usuarios"} }
         };
         productos.findByPk(id, relacion)
           .then(function (result) {
-            return res.render("products", {
+            return res.render("product", {
               productos: result,
             });
           })
           .catch(function (error) {
             console.log(error);
-          });
+          });*/
       },
 
       agregarForm: (req, res) => {

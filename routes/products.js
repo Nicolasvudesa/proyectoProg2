@@ -3,7 +3,7 @@ const router = express.Router();
 const controller = require("../controllers/productosControllers")
 
 router.get('/all', controller.findAll)
-router.get('/detalleProductos/:id', controller.detalle);
+router.get('/id/:id', controller.detalle);
 router.get('/agregar', controller.agregarForm);
 router.post('/agregar', controller.guardarForm);
 

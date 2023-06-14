@@ -57,7 +57,34 @@ const controller = {
                 fecha: info.edad,
                 dni: info.dni,
             }
-            
+            /*let filtrado = {
+                where: [{email: mail}]
+            }
+            user.findOne(filtrado) 
+                .then(function(result){
+                    
+                    let errors = {};
+                    if (email == '') {
+                        errors.message = "El mail está vacío."
+                        res.locals.errors = errors;
+                        return res.render('register')
+                    }
+                    if (result != null) {
+                        errors.message = "Email ya utilizado."
+                        res.locals.errors = errors;
+                        return res.render('register')
+                    }
+                    if (nombre == '') {
+                        errors.message = "Username es un campo obligatorio."
+                        res.locals.errors = errors;
+                        return res.render('register')
+                    }
+                    if (clave.length < 3) {
+                        errors.message = "La contraseña debe tener más de 3 caracteres."
+                        res.locals.errors = errors;
+                        return res.render('register')
+                    }
+                })*/
             user.create(userInfo)
             .then(function(result) {
     
@@ -70,62 +97,6 @@ const controller = {
             })
         },
     
-        /* function(req, res){
-            let form = req.body;
-            let mailUsuario = form.mail
-            let contraseña = form.contra
-            let fechaNacimiento = form.edad
-            let dni = form.dni
-            let fotoDePerfil = form.foto
-            let nombreUsuario = form.usuario
-    
-            let filtrado = {
-                where: [{email: mailUsuario}]
-            }
-        
-    
-        db.Usuario.findOne(filtrado) 
-        .then(function(result){
-          
-            
-            let error = {};
-            if (mailUsuario == '') {
-                error.message = "Ingrese un mail."
-                res.locals.error = error;
-                return res.render('register')
-            }
-            if (result != null) {
-                error.message = "Ingrese otro mail."
-                res.locals.error = error;
-                return res.render('register')
-            }
-            if (nombreUsuario == '') {
-                error.message = "Ingrese un nombre de usuario."
-                res.locals.error = error;
-                return res.render('register')
-            }
-            if (contraseña.length < 3) {
-                error.message = "La contraseña debe tener como minimo 3 caracteres."
-                res.locals.error = error;
-                return res.render('register')
-            }
-            
-            db.Usuario.create({
-                email:email,
-                contraseña: bcrypt.hashSync(contraseña, 12),
-                fotoPerfil: fotoDePerfil,
-                dni: dni,
-                nombre:nombre
-            })
-    
-            return res.redirect('/login')
-            
-          })
-          .catch( function(error){
-              console.log(error);
-          })
-    
-    }, */
     profile:  function(req,res){
         res.render("profile",{
             usuarioLogueado: true,
