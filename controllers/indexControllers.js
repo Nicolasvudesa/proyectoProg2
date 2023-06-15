@@ -21,40 +21,8 @@ const indexController = {
          });
     },
     
-    show: function(req, res){
-        let id = req.params.id; 
-    
-        modeloProducto.findByPk(id)
-        .then(function(result) {
-          return res.render('product', {
-            productos: result
-          })
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    
-      },
-    
-    resultado: function(req, res) {
-        let busqueda = req.query.product;
-    
-        modeloProducto.findAll(
-          {
-            where: [
-              /* { title: busqueda} */
-             /*  {title: {[op.like]: `%${busqueda}%`}} */
-             {title: {[op.like]: '%' + busqueda + '%'}}
-            ]
-          }
-        ).then(function(result) {
-          return res.render('search-results', {/*lo que recibe la busqueda!! : result*/})
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-        },
-    }
+  }
+  
 module.exports = indexController;
 
 

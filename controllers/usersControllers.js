@@ -5,8 +5,9 @@ const bcrypt = require('bcryptjs');
 const controller = {
 
     mostrarLogin: function (req, res) {
-        res.render('login');
+        res.render('login')
     },
+
     login: function (req, res) {
         let emailBuscado = req.body.email
         let contra = req.body.clave
@@ -35,12 +36,14 @@ const controller = {
               });
 
         },
+
         logout: function (req, res) {
             
             req.session.destroy();
             res.clearCookie('userId')
             return res.redirect('/users/login');
         },
+
         registro: function(req, res) {
             res.render('register')
            

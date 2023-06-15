@@ -19,8 +19,6 @@ let storage = multer.diskStorage({
 });
 let upload = multer({ storage : storage});
 
-router.get('/all', controller.findAll)
-
 router.get('/detalle/:id', controller.detalle);
 
 router.get('/agregar', controller.agregarProducto);
@@ -29,13 +27,7 @@ router.post('/agregar',upload.single('foto'),controller.guardarProducto);
 router.get('/editar/:id',controller.editar); 
 router.post('/editar/id/:id',controller.guardarEdit); 
 
-router.get('/', controller.index)
-router.get('/product')
-router.get('/product-add', controller.add)
-
 router.get('/search', controller.search)
-
-router.get('/id/:id', controller.detalle);
 
 module.exports = router;
 /*
