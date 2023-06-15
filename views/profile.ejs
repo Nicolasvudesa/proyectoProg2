@@ -10,7 +10,7 @@
 <section class="info-usuario container products-wrapper">
 	<div class="row">
 		<div class="img-container offset-3 col-2">
-			<img src= <%= usuario.fotoPerfil %> alt="foto de perfil" class="foto-perfil">
+			<img src= <%=usuario.fotoPerfil%> alt="foto de perfil" class="foto-perfil">
 		</div>
 		<div class= "formularios"class="data-container col-6">
 			<div class="d-flex align-items-center ">
@@ -24,7 +24,7 @@
 			<div>
 				<ul class="">
 					<li><%= usuario.nombre %></li>
-					<li>usuario.productos.lenth</li>
+					<li> Productos del usuario: <%= usuario.productos.length %></li>
 					<li>200 seguidores</li>
 					<li>300 comentarios</li>
 				</ul>
@@ -33,7 +33,7 @@
 	</div>
 </section>
 
-/*
+
 <div class="container products-wrapper">
 	<div class="row">
 		<div class="col-12">
@@ -45,7 +45,7 @@
 			<section class="product-box">
 				<a href="/products">
 					<figure class="product-box_image">
-						<img src= <%=%> >
+						<img src= <%= %> >
 					</figure>
 					<article class="product-box_data">
 						<h2><%= usuario.productos[i].producto %></h2>
@@ -60,4 +60,3 @@
 </div>		
 
 <%- include("./partials/footer") %>
-*/

@@ -9,9 +9,6 @@ router.get('/logout', controller.logout);
 router.get('/registrate', controller.registro);
 router.post('/registrate', controller.guardar);
 
-
-
-
 router.get('/profile/:id', controller.profile)
 
 router.get('/profile-edit', controller.edit)
