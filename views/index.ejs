@@ -6,12 +6,6 @@
 <% } else {%>
 	<%- include("./partials/headerNoLogueado") %>
 <% } %>
-	
-	<!-- Banner -->
-	<div class="banner">
-		<!--<img src="images/fondo.png" alt="Banner de ofertas"> -->
-	</div>
-	<!-- /Banner -->
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
@@ -25,12 +19,12 @@
 				<section class="product-box">
 					<a href="/products/detalle/<%=productos[i].id %>">
 						<figure class="product-box_image">
-							<img src= <%=productos[i].imagen %> >
+							<img src= "../images/productos/<%=productos[i].imagen%>" alt="">
 						</figure>
 						<article class="product-box_data">
 							<h2><%= productos[i].producto %></h2>
 							<p><%= productos[i].descripcion %></p>
-							<p>Publicado por: <a href="/users/profile/<%= productos[i].idUsuario%>">  </a></p>
+							<p>Publicado por: <a href="/users/profile/ <%=productos[i].usuarios.nombre%> "><%= productos[i].usuarios.nombre %></a></p>
 						</article>
 					</a>
 				</section>

@@ -99,7 +99,9 @@ const controller = {
     
     profile:  function(req,res){
 
-        user.findByPk(req.params.id,  {include: [{ association: "productos"}]})
+        user.findByPk(req.params.id,  
+            {include: [{ association: "productos", 
+                  include:[{association: "comentarios"}]}]})
 
             .then(function (result) {
                 return res.render("profile", {usuario: result, usuarioLogueado: true});

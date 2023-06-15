@@ -1,6 +1,5 @@
 <%- include("./partials/head") %>
 
-<!-- Header -->
 <% if (locals.user != undefined) {%>
     <%- include("./partials/headerLogueado") %> 
 <% } else {%>
@@ -15,17 +14,17 @@
 
 <section class = "formularios">
 
-    <form action="/products/agregar" method="POST">
+    <form method="POST" action="/products/agregar" enctype="multipart/form-data">
 
         <div>
             <label>Imagen del producto</label>
-            <input type="text" id="foto" name="foto">
+            <input type="file"  name="foto" >
            
         </div>
 
         <div>
             <label>Nombre del producto</label>
-            <input type="name" name="producto" value="">
+            <input type="text" name="producto" value="">
         </div>
 
         <div>
@@ -34,12 +33,7 @@
         </div>
 
 		<div>
-			<label>Fecha de carga:</label>
-			<input type="date" name="fecha" id="fecha">
-		</div>
-        
-		<div>
-			<input type="submit" value="enviar">
+			<input type="submit" value="Añadir">
 		</div>
       
     </form>

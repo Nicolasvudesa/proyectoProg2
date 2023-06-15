@@ -34,16 +34,16 @@ create table tablaProductos(
     );
 
 insert into tablaProductos(idUsuario, producto, descripcion, imagen) values
-('1', 'Audi A4', 'Una berlina premium, del segmento D.', '/images/productos/Audi_A4.jpeg' ),
-('2', 'Audi A5 Coupe', 'Una berlina coupé, del segmento D.', '/images/productos/Audi_A5_Coupe.jpeg'),
-('2', 'Audi A6 Allroad', 'Es la variante todocamino del Audi A6 Avant.', '/images/productos/Audi_A6_Allroad.jpeg'),
-('3', 'Audi A7', 'Una berlina del segmento del gran sedán de lujo.', '/images/productos/Audi_A7_Sportpack.jpeg'),
-('4', 'Audi A8', 'Una berlina de lujo, del segmento F.', '/images/productos/Audi_A8.jpeg'),
-('5', 'Audi E-tron', 'Automóvil 100% eléctrico con una autonomía libertadora.', '/images/productos/Audi_e-tron_GT.jpeg'),
-('1', 'Audi E-tron GT', 'Una berlina eléctrica con diseño coupé, del segmento E.', '/images/productos/Audi_e-tron_Sportback.jpg'),
-('2', 'Audi Q2', 'Un SUV de tamaño pequeño, del segmento B.', '/images/productos/Audi_Q2.jpeg'),
-('3', 'Audi Q3', 'Un SUV del segmento C.', '/images/productos/Audi_Q3.jpeg'),
-('4', 'Audi Q4', 'Un todocamino mediano, del segmento C.', '/images/productos/Audi_Q5.jpeg');
+('1', 'Audi A4', 'Una berlina premium, del segmento D.', 'Audi_A4.jpeg' ),
+('2', 'Audi A5 Coupe', 'Una berlina coupé, del segmento D.', 'Audi_A5_Coupe.jpeg'),
+('2', 'Audi A6 Allroad', 'Es la variante todocamino del Audi A6 Avant.', 'Audi_A6_Allroad.jpeg'),
+('3', 'Audi A7', 'Una berlina del segmento del gran sedán de lujo.', 'Audi_A7_Sportpack.jpeg'),
+('4', 'Audi A8', 'Una berlina de lujo, del segmento F.', 'Audi_A8.jpeg'),
+('5', 'Audi E-tron', 'Automóvil 100% eléctrico con una autonomía libertadora.', 'Audi_e-tron_GT.jpeg'),
+('1', 'Audi E-tron GT', 'Una berlina eléctrica con diseño coupé, del segmento E.', 'Audi_e-tron_Sportback.jpg'),
+('2', 'Audi Q2', 'Un SUV de tamaño pequeño, del segmento B.', 'Audi_Q2.jpeg'),
+('3', 'Audi Q3', 'Un SUV del segmento C.', 'Audi_Q3.jpeg'),
+('4', 'Audi Q4', 'Un todocamino mediano, del segmento C.', 'Audi_Q5.jpeg');
   
   create table tablaComentarios(
 -- nombre       		tipo        			restriccion

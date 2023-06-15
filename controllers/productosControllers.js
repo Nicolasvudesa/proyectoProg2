@@ -21,9 +21,13 @@ const controller = {
 
       detalle: function(req, res){
 
-        modeloProducto.findByPk(req.params.id,  
-          {include: [{ association: "comentarios"}, {association: "usuarios"}]})
+        modeloProducto.findByPk(req.params.id, 
 
+          {include: [{ association: "comentarios", 
+              include:[{association: "usuarios"}]},
+              
+          {association: "usuarios"}]})
+          
           .then(function (result) {
             return res.render("product", {producto: result});
           })
@@ -38,16 +42,17 @@ const controller = {
         return res.render("product-add");
       },
 
-      guardarProducto: (req, res) => {
-        let info= {
-         idUsuario: req.session.usuarioLogueado,
+      guardarProducto: function(req, res){
+
+        let infoNuevoProducto= {
+         idUsuario: res.locals.user.id,
          producto: req.body.producto,
          descripcion: req.body.descripcion,
-         imagen: req.body.foto,
-         createdAt: req.body.fecha
+         imagen: req.file.filename,
+         createdAt: new Date ()
         }
 
-        modeloProducto.create(info)
+        modeloProducto.create(infoNuevoProducto)
 
           .then((result) => {
             return res.redirect('/')

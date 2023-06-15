@@ -19,25 +19,31 @@
 	<div class="product-detail">
 		<div class="row">
 			<article class="col-12 col-lg-8 product-detail-info">
-				<img src= <%= producto.imagen %> alt="" class="product-detail-img">
+				<img src= "../../images/productos/<%=producto.imagen%>" alt="" class="product-detail-img">
 				<p class="product-detail-description">
 					Descripcion: <%= producto.descripcion %></p>
 					<p class="product-detail-description">Publicado por: <a href="/users/profile/<%= producto.idUsuario%>"> <%= producto.usuarios.nombre %> </a></p>
 			</article>
 			<div class="col-12 col-lg-4">
+
 				<section class="comments">
 					<% for(let i=0;i<producto.comentarios.length;i++) {%>
 					<article>
-						<img src= <%= producto.comentarios[i].fotoPerfil %> alt="">
-						<div class="data">
-							<p class="user">
-							<strong> <a href="/users/profile/<%= producto.comentarios[i].idUsuario %>"> <%= producto.comentarios[i].idUsuario %>: </a> </strong>
-							  <%= producto.comentarios[i].comentario %></p>
+						<a href="/users/profile/<%= producto.comentarios[i].usuarios.id%>">
+						   <img src= <%= producto.comentarios[i].usuarios.fotoPerfil %> alt="">
+						     <div class="data">
+							   <p class="user">
+								<strong>
+										<%=producto.comentarios[i].usuarios.nombre%>: 
+									</a>
+								</strong>
+								<%=producto.comentarios[i].comentario %>
+							 </p>
 						</div>
 					</article>
 					<% } %>
-
 				</section>
+				
 				<form class="form" action="" method="POST">
 					<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 					<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
