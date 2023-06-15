@@ -31,7 +31,7 @@
 					<% for(let i=0;i<producto.comentarios.length;i++) {%>
 					<article>
 						<a href="/users/profile/<%= producto.comentarios[i].usuarios.id%>">
-						   <img src= <%= producto.comentarios[i].usuarios.fotoPerfil %> alt="">
+						   <img src= "../../images/fotosPerfil/<%= producto.comentarios[i].usuarios.fotoPerfil %>" alt="">
 						     <div class="data">
 							   <p class="user">
 								<strong>
