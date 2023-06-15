@@ -1,6 +1,7 @@
+const e = require('express');
 const db = require('../database/models')
 const modeloProducto = db.Producto; //Alias del modelo
-
+let op = db.Sequelize.Op
 
 const controller = {
 
@@ -11,12 +12,10 @@ const controller = {
         };
         modeloProducto.findAll(filtrado)
           .then(function (resultado) {
-            
             return res.render("products", { productos: resultado });
           }).catch(function (error) {
             console.log(error);
           });
-    
       },
 
       detalle: function(req, res){
@@ -108,8 +107,26 @@ const controller = {
             usuarioLogueado: true,
             usuario: data.usuario
         });
-    
-    
+    },
+
+    search: function (req, res) {
+      let busqueda = req.query.search;
+      modeloProducto.findAll({
+        where: {
+          [op.or]: [
+            { producto: { [op.like]: `%${busqueda}%` } },
+            { descripcion: { [op.like]: `%${busqueda}%` } }
+          ]
+        }
+      })
+        .then(function (result) {
+          return res.render('search-results', {
+            resultados : result
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
 }
 
