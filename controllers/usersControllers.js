@@ -1,8 +1,9 @@
 const db = require("../database/models");
-const user = db.Usuario
+const modeloUsuario = db.Usuario
 const bcrypt = require('bcryptjs');
 
 const controller = {
+
     mostrarLogin: function (req, res) {
         res.render('login');
     },
@@ -13,7 +14,7 @@ const controller = {
             where: [{ email: emailBuscado }]
         };
 
-        user.findOne(filtrado)
+        modeloUsuario.findOne(filtrado)
         .then((result) => {
           
             if (result != null) {
@@ -33,34 +34,32 @@ const controller = {
                   console.log(err);
               });
 
-},
+        },
         logout: function (req, res) {
             
             req.session.destroy();
             res.clearCookie('userId')
             return res.redirect('/users/login');
         },
-        registro : function(req, res) {
+        registro: function(req, res) {
             res.render('register')
            
     
         },
-        guardar : function(req, res) {
-            
-            let info = req.body;
+    guardarRegistro: function(req, res) {
         
-            let userInfo = {
-                nombre: info.usuario,
-                email: info.mail,
-                clave: bcrypt.hashSync(info.contra, 10),
-                fotoPerfil: info.foto,
-                fecha: info.edad,
-                dni: info.dni,
+        let infoRegistro = {
+            fotoPerfil: req.file.filename,
+            nombre: req.body.usuario,
+            email: req.body.mail,
+            clave: bcrypt.hashSync(req.body.contra, 10),
+            fecha: req.body.edad,
+            dni: req.body.dni,
             }
             /*let filtrado = {
                 where: [{email: mail}]
             }
-            user.findOne(filtrado) 
+            modeloUsuario.findOne(filtrado) 
                 .then(function(result){
                     
                     let errors = {};
@@ -85,21 +84,19 @@ const controller = {
                         return res.render('register')
                     }
                 })*/
-            user.create(userInfo)
+        modeloUsuario.create(infoRegistro)
+                
             .then(function(result) {
-    
-                return res.redirect('/users/login')
+            return res.redirect('/users/login')
                 
             }).catch(function(error) {
-    
-                console.log(error);
-                
+            console.log(error); 
             })
         },
     
     profile:  function(req,res){
 
-        user.findByPk(req.params.id,  
+        modeloUsuario.findByPk(req.params.id,  
             {include: [{ association: "productos", 
                   include:[{association: "comentarios"}]}]})
 

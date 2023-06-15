@@ -16,11 +16,11 @@ create table tablaUsuarios(
     );
     
 insert into tablaUsuarios (nombre, email, clave, fotoPerfil, dni, fecha) values
-('Nicolas', 'Nicolas@gmail.com', 'nicolas123', '/images/hasbulla.jpg', 43499046, '2001-07-11'),
-('Lucas', 'Lucas@gmail.com', 'lucas123', '/images/hasbulla.jpg',  45201858, '2003-11-4'),
-('Joaquin','Joaquin@gmail.com','joaquin123', '/images/hasbulla.jpg',  43582273, '2001-09-13'),
-('Lucio','Lucio@gmail.com','lucio123', '/images/hasbulla.jpg',  45522173, '2004-02-20'),
-('Felipe','Felipe@gmail.com','felipe123', '/images/hasbulla.jpg',  42512173, '2000-01-11');
+('Nicolas', 'Nicolas@gmail.com', 'nicolas123', 'hasbulla.jpg', 43499046, '2001-07-11'),
+('Lucas', 'Lucas@gmail.com', 'lucas123', 'hasbulla.jpg',  45201858, '2003-11-4'),
+('Joaquin','Joaquin@gmail.com','joaquin123', 'hasbulla.jpg',  43582273, '2001-09-13'),
+('Lucio','Lucio@gmail.com','lucio123', 'hasbulla.jpg',  45522173, '2004-02-20'),
+('Felipe','Felipe@gmail.com','felipe123', 'hasbulla.jpg',  42512173, '2000-01-11');
   
 create table tablaProductos(
 -- nombre       		tipo        			restriccion
