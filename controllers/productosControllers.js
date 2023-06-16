@@ -82,7 +82,7 @@ const controller = {
         })
 
         .then((result) => {
-          return res.redirect("/products/id/" + id)
+          return res.redirect("/products/detalle/" + id)
         })
 
         .catch((error) => {
