@@ -7,11 +7,16 @@
     <%- include("./partials/headerNoLogueado") %>
 <% } %>
 
-<div class="col-7 col-md-6">
-    <form action="/users/search" method="GET" class="search-form">
-        <input type="text" name="search" placeholder="Buscar Usuario" class="search-form_input">
-        <button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
-    </form>
-</div>
+<div class="container products-wrapper">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="products-title">Encuentra a tu usuario</h2>
+        </div>
+                <div class="col-7 col-md-6">
+                    <form action="/users/search" method="GET" class="search-form">
+                        <input type="text" name="search" placeholder="Buscar Usuario" class="search-form_input">
+                        <button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
 
 <%- include("./partials/footer") %>

@@ -5,20 +5,13 @@
 <% } else {%>
 	<%- include("./partials/headerNoLogueado") %>
 <% } %>
-<div class="col-7 col-md-6">
-    <form action="/users/search" method="GET" class="search-form">
-        <input type="text" name="search" placeholder="Buscar Usuario" class="search-form_input">
-        <button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
-    </form>
-</div>
 
-	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
-			<!-- Show the "ultimos" products -->
+
 			<% if (resultados.length == 0) { %>
 				<h3 class = "formularios">No hay resultados para su criterio de búsqueda</h3>
 			<% }else{ %>

@@ -163,9 +163,11 @@ const controller = {
 
     search: function (req, res) {
 
-        let busqueda = req.query.search;
-  
-        modeloUsuario.findAll({
+      let busqueda = req.query.search;
+        if(busqueda.length === 0){
+            return res.redirect("/users/searchUsuario")} 
+        else{
+            modeloUsuario.findAll({
             include: [{association: 'productos'}],
             where: {
                 [op.or]: [
@@ -179,6 +181,7 @@ const controller = {
             .catch(function (error) {
             console.log(error);
             });
+           }
         }
 }
 
