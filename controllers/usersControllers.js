@@ -1,7 +1,7 @@
 const db = require("../database/models");
 const modeloUsuario = db.Usuario
 const bcrypt = require('bcryptjs');
-let op = db.Sequelize.Op    ///nose si sacar
+let op = db.Sequelize.Op
 
 const controller = {
 
