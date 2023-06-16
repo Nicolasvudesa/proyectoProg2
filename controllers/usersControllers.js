@@ -64,6 +64,11 @@ const controller = {
             res.locals.errors = errors
             return res.render("register")
         }
+        else if(req.body.foto==""){
+            errors.message = "Ingrese su foto de perfil en forma de URL."
+            res.locals.errors = errors
+            return res.render("register")
+        }
         else if(req.body.mail==""){
             errors.message = "Ingrese un email."
             res.locals.errors = errors
@@ -79,18 +84,13 @@ const controller = {
             res.locals.errors = errors
             return res.render("register")
         }
-        else if(req.body.edad==""){
-            errors.message = "Ingrese su fecha de nacimiento."
-            res.locals.errors = errors
-            return res.render("register")
-        }
         else if(req.body.dni==""){
             errors.message = "Ingrese su DNI."
             res.locals.errors = errors
             return res.render("register")
         }
-        else if(req.body.foto==""){
-            errors.message = "Ingrese su foto de perfil en forma de URL."
+        else if(req.body.edad==""){
+            errors.message = "Ingrese su fecha de nacimiento."
             res.locals.errors = errors
             return res.render("register")
         }
