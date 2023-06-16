@@ -1,0 +1,17 @@
+<%- include("./partials/head") %>
+
+<!-- Header -->
+<% if (locals.user != undefined) {%>
+    <%- include("./partials/headerLogueado") %> 
+<% } else {%>
+    <%- include("./partials/headerNoLogueado") %>
+<% } %>
+
+<div class="col-7 col-md-6">
+    <form action="/users/search" method="GET" class="search-form">
+        <input type="text" name="search" placeholder="Buscar Usuario" class="search-form_input">
+        <button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
+    </form>
+</div>
+
+<%- include("./partials/footer") %>

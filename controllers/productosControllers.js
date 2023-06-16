@@ -5,72 +5,72 @@ let op = db.Sequelize.Op
 
 const controller = {
 
-      detalle: function(req, res){
+    detalle: function(req, res){
 
-        modeloProducto.findByPk(req.params.id, 
+      modeloProducto.findByPk(req.params.id, 
 
-          {include: [{association: "comentarios",
-                     include: [{ association: "usuarios" }],
-                     limit: 4, // Limitar el número de comentarios
-                     order: [["createdAt", "DESC"]]},
+        {include: [{association: "comentarios",
+                    include: [{ association: "usuarios" }],
+                    limit: 4, // Limitar el número de comentarios
+                    order: [["createdAt", "DESC"]]},
 
-                     {association: "usuarios" }]})
-          
-          .then(function (result) {
-            return res.render("product", {producto: result});
+                    {association: "usuarios" }]})
+        
+        .then(function (result) {
+          return res.render("product", {producto: result});
+        })
+
+        .catch(function (error) {
+          console.log(error);
+        });
+
+        },
+
+    agregarProducto: (req, res) => {
+      return res.render("product-add")
+    },
+
+    guardarProducto: function(req, res){
+
+      let errors = {}
+      if(req.body.producto=="" || req.body.descripcion=="" || req.body.foto==""){
+          errors.message = "Por favor, asegúrese de completar todos los campos ante de agregar un producto."
+          res.locals.errors = errors
+          return res.render("product-add")}  
+      else {
+              let infoNuevoProducto= {
+                  idUsuario: res.locals.user.id,
+                  producto: req.body.producto,
+                  descripcion: req.body.descripcion,
+                  imagen: req.body.foto,
+                  createdAt: new Date ()}
+
+                  modeloProducto.create(infoNuevoProducto)
+
+                    .then((result) => {
+                      return res.redirect('/')
+                    }).catch((error) => {
+                      console.log(error)
+                    })}
+        },
+
+    editar: (req,res) => {
+
+      let id= req.params.id;
+
+      modeloProducto.findByPk(id)
+
+          .then((result) => {
+          console.log(result);
+            return res.render("product-edit", {producto:result})
           })
 
-          .catch(function (error) {
-            console.log(error);
-          });
+          .catch((error) => {
+            console.log(error)
+          })
+        },
 
-         },
-
-      agregarProducto: (req, res) => {
-        return res.render("product-add")
-      },
-
-      guardarProducto: function(req, res){
-
-        let errors = {}
-        if(req.body.producto=="" || req.body.descripcion=="" || req.body.foto==""){
-            errors.message = "Por favor, asegúrese de completar todos los campos ante de agregar un producto."
-            res.locals.errors = errors
-            return res.render("product-add")}  
-        else {
-                let infoNuevoProducto= {
-                    idUsuario: res.locals.user.id,
-                    producto: req.body.producto,
-                    descripcion: req.body.descripcion,
-                    imagen: req.body.foto,
-                    createdAt: new Date ()}
-
-                    modeloProducto.create(infoNuevoProducto)
-
-                      .then((result) => {
-                        return res.redirect('/')
-                      }).catch((error) => {
-                        console.log(error)
-                      })}
-         },
-
-      editar: (req,res) => {
-
-        let id= req.params.id;
-
-        modeloProducto.findByPk(id)
-
-           .then((result) => {
-            console.log(result);
-              return res.render("product-edit", {producto:result})
-           })
-
-           .catch((error) => {
-             console.log(error)
-           })
-         },
-
-      guardarEdit: (req,res) =>{
+    guardarEdit: (req,res) =>{
         let id= req.params.id;
         let info= req.body;
 
@@ -105,7 +105,7 @@ const controller = {
         .catch(function (error) {
           console.log(error);
         });
-     }
+      },
 }
 
 module.exports = controller
