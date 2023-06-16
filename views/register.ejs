@@ -14,11 +14,17 @@
         </div>
 <section class = "formularios">
 
-    <form method="POST" action="/users/registrate" enctype="multipart/form-data">
+    <form method="POST" action="/users/registrate">
+
         <% if (locals.errors) {%>
             <p style="color: red"><%= errors.message%></p> 
         <% } %>
-       
+
+        <div>
+            <label>Foto de perfil como URL:</label>
+            <input type="text" name="foto" value="">
+        </div>
+
         <div>
             <label>Mail:</label>
             <input type="email" name="mail" value="">

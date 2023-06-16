@@ -12,11 +12,8 @@ const controller = {
     login: function (req, res) {
         let emailBuscado = req.body.email
         let contra = req.body.clave
-        let filtrado = {
-            where: [{ email: emailBuscado }]
-        };
 
-        modeloUsuario.findOne(filtrado)
+        modeloUsuario.findOne({where: [{ email: emailBuscado }]})
         .then((result) => {
             let errores = {}
             if (result != null) {
@@ -30,12 +27,12 @@ const controller = {
 
   
                         } else{
-                            errores.message = "Contraseña incorrecta"
+                            errores.message = "Contraseña incorrecta."
                             res.locals.errores = errores
                             return res.render('login')
                         }
                         }else{
-                            errores.message = "Mail inexistente"
+                            errores.message = "Mail inexistente, vuelva a intentarlo o regístrece si no lo hizo anterioremente."
                             res.locals.errores = errores
                         return res.render('login')
                     }
@@ -59,42 +56,46 @@ const controller = {
            
     
         },
-    guardarRegistro: function(req, res) {
-        let info = req.body;
+
+        guardarRegistro: function(req, res) {
         let errors = {}
         if(req.body.mail=="" && req.body.usuario=="" && req.body.contra=="" && req.body.dni==""){
-            errors.message = "Complete todos los campos"
+            errors.message = "Por favor, complete todos los campos."
             res.locals.errors = errors
             return res.render("register")
         }
         else if(req.body.mail==""){
-            errors.message = "Ingrese un email"
+            errors.message = "Ingrese un email."
             res.locals.errors = errors
             return res.render("register")
         }
         else if(req.body.usuario==""){
-            errors.message = "Ingrese un usuario"
+            errors.message = "Ingrese un usuario."
             res.locals.errors = errors
             return res.render("register")
         }
         else if(req.body.contra==""){
-            errors.message = "Ingrese una contraseña"
+            errors.message = "Ingrese una contraseña."
             res.locals.errors = errors
             return res.render("register")
         }
-        else if(req.body.edad=""){
-            errors.message = "Ingrese su fecha de nacimiento"
+        else if(req.body.edad==""){
+            errors.message = "Ingrese su fecha de nacimiento."
             res.locals.errors = errors
             return res.render("register")
         }
         else if(req.body.dni==""){
-            errors.message = "Ingrese su DNI"
+            errors.message = "Ingrese su DNI."
             res.locals.errors = errors
             return res.render("register")
         }
-        
+        else if(req.body.foto==""){
+            errors.message = "Ingrese su foto de perfil en forma de URL."
+            res.locals.errors = errors
+            return res.render("register")
+        }
         else if(req.body.contra.length<3){
-            errors.message = "La contraseña debe tener al menos tres caracteres"
+            errors.message = "La contraseña debe tener al menos tres caracteres."
             res.locals.errors = errors
             return res.render("register")
         }
@@ -103,13 +104,13 @@ const controller = {
             db.Usuario.findOne(mailRepetido)
             .then(function(mailRepetido){
                 if (mailRepetido != undefined){
-                    errors.message = "El email ingresado ya esta registrado";
+                    errors.message = "El email ingresado ya esta registrado.";
                     res.locals.errors = errors
                     return res.render('register')}
                 else{
 
         let infoRegistro = {
-          /*  fotoPerfil: req.file.filename, */
+            fotoPerfil: req.body.foto,
             nombre: req.body.usuario,
             email: req.body.mail,
             clave: bcrypt.hashSync(req.body.contra, 10),

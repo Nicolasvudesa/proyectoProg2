@@ -23,7 +23,7 @@ module.exports = function (sequelize, dataTypes){
     },
 
     fotoPerfil:{
-        type: dataTypes.STRING,
+        type: dataTypes.TEXT,
     },
 
     dni:{
