@@ -100,11 +100,15 @@ const controller = {
     profile:  function(req,res){
 
         modeloUsuario.findByPk(req.params.id,  
+
             {include: [{ association: "productos", 
-                  include:[{association: "comentarios"}]}]})
+                         include:[{association: "comentarios"}]}], 
+
+            order: [['productos','createdAt', 'DESC']]})
 
             .then(function (result) {
-                return res.render("profile", {usuario: result, usuarioLogueado: true});
+                console.log(result.productos)
+                return res.render("profile", {usuario: result});
               })
     
             .catch(function (error) {
