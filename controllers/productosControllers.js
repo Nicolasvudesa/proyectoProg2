@@ -36,7 +36,7 @@ const controller = {
          idUsuario: res.locals.user.id,
          producto: req.body.producto,
          descripcion: req.body.descripcion,
-         imagen: req.file.filename,
+         imagen: req.body.foto,
          createdAt: new Date ()}
 
         modeloProducto.create(infoNuevoProducto)

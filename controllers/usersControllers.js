@@ -105,7 +105,7 @@ const controller = {
                 else{
 
         let infoRegistro = {
-            fotoPerfil: req.file.filename,
+          /*  fotoPerfil: req.file.filename, */
             nombre: req.body.usuario,
             email: req.body.mail,
             clave: bcrypt.hashSync(req.body.contra, 10),
