@@ -32,20 +32,26 @@ const controller = {
 
       guardarProducto: function(req, res){
 
-        let infoNuevoProducto= {
-         idUsuario: res.locals.user.id,
-         producto: req.body.producto,
-         descripcion: req.body.descripcion,
-         imagen: req.file.filename,
-         createdAt: new Date ()}
+        let errors = {}
+        if(req.body.producto=="" || req.body.descripcion=="" || req.body.foto==""){
+            errors.message = "Por favor, asegúrese de completar todos los campos ante de agregar un producto."
+            res.locals.errors = errors
+            return res.render("product-add")}  
+        else {
+                let infoNuevoProducto= {
+                    idUsuario: res.locals.user.id,
+                    producto: req.body.producto,
+                    descripcion: req.body.descripcion,
+                    imagen: req.body.foto,
+                    createdAt: new Date ()}
 
-        modeloProducto.create(infoNuevoProducto)
+                    modeloProducto.create(infoNuevoProducto)
 
-          .then((result) => {
-            return res.redirect('/')
-          }).catch((error) => {
-            console.log(error)
-          })
+                      .then((result) => {
+                        return res.redirect('/')
+                      }).catch((error) => {
+                        console.log(error)
+                      })}
          },
 
       editar: (req,res) => {

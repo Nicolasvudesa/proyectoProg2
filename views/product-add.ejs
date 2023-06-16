@@ -14,16 +14,20 @@
 
 <section class = "formularios">
 
-    <form method="POST" action="/products/agregar" enctype="multipart/form-data">
+    <form method="POST" action="/products/agregar" >
+
+        <% if (locals.errors) {%>
+            <p style="color: red"><%= errors.message%></p> 
+        <% } %>
 
         <div>
-            <label>Imagen del producto</label>
-            <input type="file"  name="foto" >
+            <label>Imagen del producto como URL:</label>
+            <input type="text"  name="foto" value="">
            
         </div>
 
         <div>
-            <label>Nombre del producto</label>
+            <label>Nombre del producto:</label>
             <input type="text" name="producto" value="">
         </div>
 

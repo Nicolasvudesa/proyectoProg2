@@ -32,7 +32,7 @@ module.exports = function (sequelize, dataTypes){
     },
 
     imagen:{
-        type: dataTypes.STRING,
+        type: dataTypes.TEXT,
     },
 
 
