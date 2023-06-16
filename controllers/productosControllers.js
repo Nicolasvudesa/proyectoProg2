@@ -80,9 +80,9 @@ const controller = {
       where: [{id:id}]
     })
 
-    .then((result) => {
-      return res.redirect("/products/id/" + id)
-    })
+        .then((result) => {
+          return res.redirect("/products/detalle/" + id)
+        })
 
     .catch((error) => {
       console.log(error);
