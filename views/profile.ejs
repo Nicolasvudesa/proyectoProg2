@@ -14,10 +14,10 @@
 		</div>
 		<div class= "formularios"class="data-container col-6">
 			<div class="d-flex align-items-center ">
-				<h1 class="main-title"> <%= usuario.nombre %></h1>
+				<h1 class="main-title" style="font-size: 45px;"> <%= usuario.nombre %></h1>
 			</div>
 			<div>
-				<ul class="">
+				<ul>
 					<li>Activo desde: <%=usuario.createdAt.toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short' })%></li>
 					<li>Productos publicados: <%=usuario.productos.length%></li>
 					<li>Comentarios realizados: <%=usuario.comentarios.length%></li>

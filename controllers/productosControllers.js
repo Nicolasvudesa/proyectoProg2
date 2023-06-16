@@ -27,7 +27,7 @@ const controller = {
 
         },
 
-    agregarProducto: (req, res) => {
+    agregarProducto: function(req, res){
       return res.render("product-add")
     },
 
