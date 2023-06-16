@@ -57,57 +57,57 @@ const controller = {
     
         },
 
-    guardarRegistro: function(req, res) {
-    let errors = {}
-    if(req.body.mail=="" && req.body.usuario=="" && req.body.contra=="" && req.body.dni==""){
-        errors.message = "Por favor, complete todos los campos."
-        res.locals.errors = errors
-        return res.render("register")
-    }
-    else if(req.body.mail==""){
-        errors.message = "Ingrese un email."
-        res.locals.errors = errors
-        return res.render("register")
-    }
-    else if(req.body.usuario==""){
-        errors.message = "Ingrese un usuario."
-        res.locals.errors = errors
-        return res.render("register")
-    }
-    else if(req.body.contra==""){
-        errors.message = "Ingrese una contraseña."
-        res.locals.errors = errors
-        return res.render("register")
-    }
-    else if(req.body.edad==""){
-        errors.message = "Ingrese su fecha de nacimiento."
-        res.locals.errors = errors
-        return res.render("register")
-    }
-    else if(req.body.dni==""){
-        errors.message = "Ingrese su DNI."
-        res.locals.errors = errors
-        return res.render("register")
-    }
-    else if(req.body.foto==""){
-        errors.message = "Ingrese su foto de perfil en forma de URL."
-        res.locals.errors = errors
-        return res.render("register")
-    }
-    else if(req.body.contra.length<3){
-        errors.message = "La contraseña debe tener al menos tres caracteres."
-        res.locals.errors = errors
-        return res.render("register")
-    }
-    else if(req.body.contra){
-        let mailRepetido= {where:[{email: {[op.like]:req.body.mail}}]}
-        db.Usuario.findOne(mailRepetido)
-        .then(function(mailRepetido){
-            if (mailRepetido != undefined){
-                errors.message = "El email ingresado ya esta registrado.";
-                res.locals.errors = errors
-                return res.render('register')}
-            else{
+        guardarRegistro: function(req, res) {
+        let errors = {}
+        if(req.body.mail=="" && req.body.usuario=="" && req.body.contra=="" && req.body.dni=="" && req.body.foto==""){
+            errors.message = "Por favor, complete todos los campos."
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.foto==""){
+            errors.message = "Ingrese su foto de perfil en forma de URL."
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.mail==""){
+            errors.message = "Ingrese un email."
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.usuario==""){
+            errors.message = "Ingrese un usuario."
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.contra==""){
+            errors.message = "Ingrese una contraseña."
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.dni==""){
+            errors.message = "Ingrese su DNI."
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.edad==""){
+            errors.message = "Ingrese su fecha de nacimiento."
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.contra.length<3){
+            errors.message = "La contraseña debe tener al menos tres caracteres."
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.contra){
+            let mailRepetido= {where:[{email: {[op.like]:req.body.mail}}]}
+            db.Usuario.findOne(mailRepetido)
+            .then(function(mailRepetido){
+                if (mailRepetido != undefined){
+                    errors.message = "El email ingresado ya esta registrado.";
+                    res.locals.errors = errors
+                    return res.render('register')}
+                else{
 
     let infoRegistro = {
         fotoPerfil: req.body.foto,
@@ -163,9 +163,11 @@ const controller = {
 
     search: function (req, res) {
 
-        let busqueda = req.query.search;
-  
-        modeloUsuario.findAll({
+      let busqueda = req.query.search;
+        if(busqueda.length === 0){
+            return res.redirect("/users/searchUsuario")} 
+        else{
+            modeloUsuario.findAll({
             include: [{association: 'productos'}],
             where: {
                 [op.or]: [
@@ -179,6 +181,7 @@ const controller = {
             .catch(function (error) {
             console.log(error);
             });
+           }
         }
 }
 
