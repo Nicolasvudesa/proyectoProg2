@@ -90,22 +90,23 @@ const controller = {
     search: function (req, res) {
 
       let busqueda = req.query.search;
+      if(busqueda.length === 0){
+        return res.redirect("/")}  
+        else {
+            modeloProducto.findAll({
+               include: [{association: 'usuarios'}],
+                where: {[op.or]: [ { producto: { [op.like]: `%${busqueda}%` } },
+                                { descripcion: { [op.like]: `%${busqueda}%` } }]},
+                order: [['createdAT', 'DESC']]})
 
-      modeloProducto.findAll({
-        include: [{association: 'usuarios'}],
-        where: {
-          [op.or]: [
-            { producto: { [op.like]: `%${busqueda}%` } },
-            { descripcion: { [op.like]: `%${busqueda}%` } }]},
-        order: [['createdAT', 'DESC']]})
-
-        .then(function (result) {
-          return res.render('search-results', {resultados : result});
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-     }
+               .then(function (result) {
+                    return res.render('search-results', {resultados : result});
+                })
+               .catch(function (error) {
+                    console.log(error);
+                });
+             }
+    }
 }
 
 module.exports = controller

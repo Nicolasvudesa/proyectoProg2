@@ -10,6 +10,6 @@ router.post('/agregar',controller.guardarProducto);
 router.get('/editar/:id',controller.editar); 
 router.post('/editar/id/:id',controller.guardarEdit); 
 
-router.get('/search', controller.search)
+router.get('/:search', controller.search)
 
 module.exports = router;
