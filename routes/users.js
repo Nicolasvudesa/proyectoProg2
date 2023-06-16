@@ -13,5 +13,8 @@ router.post('/registrate',controller.guardarRegistro);
 router.get('/profile/:id', controller.profile)
 router.get('/profile-edit', controller.edit)
 
+router.get('/searchUsuario' , controller.buscar)
+router.get('/search' , controller.search)
+
 module.exports = router;
 

@@ -44,12 +44,12 @@ const controller = {
 
         },
 
-        logout: function (req, res) {
-            
-            req.session.destroy();
-            res.clearCookie('userId')
-            return res.redirect('/users/login');
-        },
+    logout: function (req, res) {
+        
+        req.session.destroy();
+        res.clearCookie('userId')
+        return res.redirect('/users/login');
+    },
 
         mostrarRegistro: function(req, res) {
             res.render('register')
@@ -109,26 +109,26 @@ const controller = {
                     return res.render('register')}
                 else{
 
-        let infoRegistro = {
-            fotoPerfil: req.body.foto,
-            nombre: req.body.usuario,
-            email: req.body.mail,
-            clave: bcrypt.hashSync(req.body.contra, 10),
-            fecha: req.body.edad,
-            dni: req.body.dni,
-            }
-         
-        modeloUsuario.create(infoRegistro)
-                
-            .then(function(result) {
-            return res.redirect('/users/login')
-                
-            }).catch(function(error) {
-            console.log(error); 
+    let infoRegistro = {
+        fotoPerfil: req.body.foto,
+        nombre: req.body.usuario,
+        email: req.body.mail,
+        clave: bcrypt.hashSync(req.body.contra, 10),
+        fecha: req.body.edad,
+        dni: req.body.dni,
+        }
+        
+    modeloUsuario.create(infoRegistro)
+            
+        .then(function(result) {
+        return res.redirect('/users/login')
+            
+        }).catch(function(error) {
+        console.log(error); 
+        })
+                }
             })
-                    }
-                })
-            }},
+        }},
     
     
     profile:  function(req,res){
@@ -155,7 +155,31 @@ const controller = {
             usuarioLogueado: true,
             usuario: data.usuario
         });
-    }
+    },
+
+    buscar: function (req, res) {
+        res.render('search-usuario')
+    },
+
+    search: function (req, res) {
+
+        let busqueda = req.query.search;
+  
+        modeloUsuario.findAll({
+            include: [{association: 'productos'}],
+            where: {
+                [op.or]: [
+                { nombre: { [op.like]: `%${busqueda}%` } },
+                { email: { [op.like]: `%${busqueda}%` } }]},
+            order: [['createdAT', 'DESC']]})
+        
+            .then(function (result) {
+            return res.render('search-results-usuarios', {resultados : result});
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
+        }
 }
 
 module.exports = controller
