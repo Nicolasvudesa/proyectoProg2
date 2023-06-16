@@ -14,8 +14,9 @@
 		<h2 class="products-title"> <%= producto.producto %></h2> 
 		
 		<p class="product-detail-editar">
-			
+			<% if (locals.user && locals.user.id == producto.idUsuario) { %>
 			<a href="/products/editar/<%=producto.id %>">Editar</a>
+			<% } %>
 		</p>
 	</div>
 	<div class="product-detail">
