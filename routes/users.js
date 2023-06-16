@@ -3,11 +3,11 @@ var router = express.Router();
 const controller = require("../controllers/usersControllers")
 
 router.get('/login', controller.mostrarLogin)
-router.post('/login', controller.login)
+router.post('/login', controller.accionLogin)
 
 router.get('/logout', controller.logout); 
 
-router.get('/registrate', controller.registro);
+router.get('/registrate', controller.mostrarRegistro);
 router.post('/registrate',controller.guardarRegistro);
 
 router.get('/profile/:id', controller.profile)

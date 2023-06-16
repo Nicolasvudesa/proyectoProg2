@@ -1,6 +1,7 @@
 const e = require('express');
 const db = require('../database/models')
 const modeloProducto = db.Producto; //Alias del modelo
+const modeloComentario = db.Comentario;
 let op = db.Sequelize.Op
 
 const controller = {
@@ -47,12 +48,14 @@ const controller = {
 
                   modeloProducto.create(infoNuevoProducto)
 
-                    .then((result) => {
-                      return res.redirect('/')
-                    }).catch((error) => {
-                      console.log(error)
-                    })}
-        },
+                      .then((result) => {
+                        return res.redirect('/')
+                      })
+
+                      .catch((error) => {
+                        console.log(error)
+                      })}
+         },
 
     editar: (req,res) => {
 
@@ -90,22 +93,72 @@ const controller = {
     search: function (req, res) {
 
       let busqueda = req.query.search;
+      if(busqueda.length === 0){
+        return res.redirect("/")}  
+        else {
+            modeloProducto.findAll({
+               include: [{association: 'usuarios'}],
+                where: {[op.or]: [ { producto: { [op.like]: `%${busqueda}%` } },
+                                { descripcion: { [op.like]: `%${busqueda}%` } }]},
+                order: [['createdAT', 'DESC']]})
 
-      modeloProducto.findAll({
-        include: [{association: 'usuarios'}],
-        where: {
-          [op.or]: [
-            { producto: { [op.like]: `%${busqueda}%` } },
-            { descripcion: { [op.like]: `%${busqueda}%` } }]},
-        order: [['createdAT', 'DESC']]})
+               .then(function (result) {
+                    return res.render('search-results', {resultados : result});
+                })
 
-        .then(function (result) {
-          return res.render('search-results', {resultados : result});
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      },
+               .catch(function (error) {
+                    console.log(error);
+                });
+             }
+    },
+
+    agregarComentario: function (req, res) {
+
+       let errors = {}
+
+        if(req.body.comentario===""){
+            errors.message = "Por favor, antes de agregar un comentario asegurese que no este vacio."
+            res.locals.errors = errors
+
+            modeloProducto.findByPk(req.params.idProducto, //Lo necesite poner porque sino no podia mostrar el error en pantalla porque con redirect no trasladaba los errores.
+                     
+              {include: [{association: "comentarios",
+                         include: [{ association: "usuarios" }],
+                         limit: 4, // Limitar el número de comentarios
+                         order: [["createdAt", "DESC"]]},
+    
+                         {association: "usuarios" }]})
+              
+              .then(function (result) {
+                return res.render("product", {producto: result});
+              })
+    
+              .catch(function (error) {
+                console.log(error);
+              });
+            
+        }else{
+        
+            let infoNuevoComentario = {
+                idUsuario: res.locals.user.id,
+                idProducto: req.params.idProducto,
+                comentario: req.body.comentario,
+                createdAt: new Date ()}
+
+                 modeloComentario.create(infoNuevoComentario)
+
+                   .then(function(result){
+                       return res.redirect('/products/detalle/' + req.params.idProducto)
+                   })
+
+                   .catch(function(error){
+                        console.log(error)
+                   })
+             }
+    }
 }
+        
+
+
 
 module.exports = controller

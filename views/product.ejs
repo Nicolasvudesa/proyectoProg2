@@ -46,11 +46,23 @@
 					</article>
 					<% } %>
 				</section>
+
 				
-				<form class="form" action="" method="POST">
-					<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+
+				<% if (locals.user != undefined) {%>
+					<form method="POST" action="/products/agregarComentario/<%= producto.id%>" class="form">
+						<% if (locals.errors && locals.errors.message) {%>
+							<p style="color: red; font-size: 16px"><%=locals.errors.message%></p> 
+						 <% } %>
+					<input class="form-input" type="text" value="" placeholder="Agregar comentario" name="comentario">
 					<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-				</form>
+					</form>
+				<% } else {%>
+					<form method="GET" action="/users/login" class="form">
+					<button type="submit" class="buy-now-button">LOGUEATE ANTES DE AGREGAR COMENTARIO</button>
+				    </form>
+				<% } %>
+
 				<hr>
 			</div>
 		</div>
