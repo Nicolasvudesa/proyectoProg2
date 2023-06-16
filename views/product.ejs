@@ -32,7 +32,7 @@
 					<% for(let i=0;i<producto.comentarios.length;i++) {%>
 					<article>
 						<a href="/users/profile/<%= producto.comentarios[i].usuarios.id%>">
-						   <img src= "../../images/fotosPerfil/<%= producto.comentarios[i].usuarios.fotoPerfil %>" alt="">
+						   <img src= <%= producto.comentarios[i].usuarios.fotoPerfil %> alt="">
 						     <div class="data">
 							   <p class="user">
 								<strong>
@@ -41,6 +41,7 @@
 								</strong>
 								<%=producto.comentarios[i].comentario %>
 							 </p>
+							 <p><%=producto.comentarios[i].createdAt.toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short' }) %> %></p>
 						</div>
 					</article>
 					<% } %>
