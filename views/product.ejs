@@ -1,6 +1,5 @@
 <%- include("./partials/head") %>
 
-
 <% if (locals.user != undefined) {%>
 	<%- include("./partials/headerLogueado") %> 
 <% } else {%>
@@ -46,9 +45,7 @@
 						</div>
 					</article>
 					<% } %>
-				</section>
-
-				
+				</section>	
 
 				<% if (locals.user != undefined) {%>
 					<form method="POST" action="/products/agregarComentario/<%= producto.id%>" class="form">

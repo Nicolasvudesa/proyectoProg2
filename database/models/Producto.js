@@ -35,7 +35,6 @@ module.exports = function (sequelize, dataTypes){
         type: dataTypes.TEXT,
     },
 
-
     };
 
     let config = {

@@ -3,24 +3,24 @@ const modeloProducto = db.Producto;
 
 const indexController = {
 
-    index: function(req,res){
+  index: function(req,res){
 
-        modeloProducto.findAll({
+    modeloProducto.findAll({
 
-          include: [{association: 'usuarios'}],
-          limit: 16,
-          order: [['createdAT', 'DESC']]
-          
-        })
+      include: [{association: 'usuarios'}],
+      limit: 16,
+      order: [['createdAT', 'DESC']]
+      
+    })
 
-        .then(function(result){
-          return res.render("index",{productos: result})
-        })
+    .then(function(result){
+      return res.render("index",{productos: result})
+    })
 
-        .catch(function(error){
-            console.log(error)
-        });
-    },
+    .catch(function(error){
+        console.log(error)
+    });
+  },
     
 }
   
