@@ -23,7 +23,11 @@ const controller = {
                       let claveCorrecta = bcrypt.compareSync(contra, result.clave)
                       if (claveCorrecta) {
                           req.session.user = result.dataValues;
+                          if (req.body.recordame != undefined) {
+                            res.cookie('userId' , result.id , {maxAge: 1000 * 60 * 15})
+                          }
                           return res.redirect('/');
+
   
                         } else{
                             errores.message = "Contraseña incorrecta"

@@ -44,8 +44,8 @@ app.use(function(req, res, next){
 
     db.Usuario.findByPk(idUsuarioEnCookie)
     .then((user)=>{
-      req.session.user = user.dataValues
-      res.locals.user = user.dataValues
+      req.session.user = user.dataValues;
+      res.locals.user = user.dataValues;
       return next();
     }).catch((err)=>{
       console.log(err)
