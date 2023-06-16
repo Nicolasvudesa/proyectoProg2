@@ -1,6 +1,7 @@
 const db = require("../database/models");
 const modeloUsuario = db.Usuario
 const bcrypt = require('bcryptjs');
+let op = db.Sequelize.Op
 
 const controller = {
 
@@ -17,21 +18,26 @@ const controller = {
 
         modeloUsuario.findOne(filtrado)
         .then((result) => {
-          
+            let errores = {}
             if (result != null) {
                       let claveCorrecta = bcrypt.compareSync(contra, result.clave)
                       if (claveCorrecta) {
                           req.session.user = result.dataValues;
                           return res.redirect('/');
   
-                      } else {
-                          return res.send("La contraseña ingresada es incorrecta");
-                      }
-                  } else {
-                      return res.send("Este mail es inexistente")
-                  }
+                        } else{
+                            errores.message = "Contraseña incorrecta"
+                            res.locals.errores = errores
+                            return res.render('login')
+                        }
+                        }else{
+                            errores.message = "Mail inexistente"
+                            res.locals.errores = errores
+                        return res.render('login')
+                    }
   
-              }).catch((err) => {
+              })
+              .catch((err) => {
                   console.log(err);
               });
 
@@ -50,7 +56,54 @@ const controller = {
     
         },
     guardarRegistro: function(req, res) {
+        let info = req.body;
+        let errors = {}
+        if(req.body.mail=="" && req.body.usuario=="" && req.body.contra=="" && req.body.dni==""){
+            errors.message = "Complete todos los campos"
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.mail==""){
+            errors.message = "Ingrese un email"
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.usuario==""){
+            errors.message = "Ingrese un usuario"
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.contra==""){
+            errors.message = "Ingrese una contraseña"
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.edad=""){
+            errors.message = "Ingrese su fecha de nacimiento"
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.dni==""){
+            errors.message = "Ingrese su DNI"
+            res.locals.errors = errors
+            return res.render("register")
+        }
         
+        else if(req.body.contra.length<3){
+            errors.message = "La contraseña debe tener al menos tres caracteres"
+            res.locals.errors = errors
+            return res.render("register")
+        }
+        else if(req.body.contra){
+            let mailRepetido= {where:[{email: {[op.like]:req.body.mail}}]}
+            db.Usuario.findOne(mailRepetido)
+            .then(function(mailRepetido){
+                if (mailRepetido != undefined){
+                    errors.message = "El email ingresado ya esta registrado";
+                    res.locals.errors = errors
+                    return res.render('register')}
+                else{
+
         let infoRegistro = {
             fotoPerfil: req.file.filename,
             nombre: req.body.usuario,
@@ -59,34 +112,7 @@ const controller = {
             fecha: req.body.edad,
             dni: req.body.dni,
             }
-            /*let filtrado = {
-                where: [{email: mail}]
-            }
-            modeloUsuario.findOne(filtrado) 
-                .then(function(result){
-                    
-                    let errors = {};
-                    if (email == '') {
-                        errors.message = "El mail está vacío."
-                        res.locals.errors = errors;
-                        return res.render('register')
-                    }
-                    if (result != null) {
-                        errors.message = "Email ya utilizado."
-                        res.locals.errors = errors;
-                        return res.render('register')
-                    }
-                    if (nombre == '') {
-                        errors.message = "Username es un campo obligatorio."
-                        res.locals.errors = errors;
-                        return res.render('register')
-                    }
-                    if (clave.length < 3) {
-                        errors.message = "La contraseña debe tener más de 3 caracteres."
-                        res.locals.errors = errors;
-                        return res.render('register')
-                    }
-                })*/
+         
         modeloUsuario.create(infoRegistro)
                 
             .then(function(result) {
@@ -95,7 +121,10 @@ const controller = {
             }).catch(function(error) {
             console.log(error); 
             })
-        },
+                    }
+                })
+            }},
+    
     
     profile:  function(req,res){
 
