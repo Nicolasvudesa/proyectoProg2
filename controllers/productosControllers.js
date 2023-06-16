@@ -9,10 +9,12 @@ const controller = {
 
         modeloProducto.findByPk(req.params.id, 
 
-          {include: [{ association: "comentarios", 
-              include:[{association: "usuarios"}]},
-              
-          {association: "usuarios"}]})
+          {include: [{association: "comentarios",
+                     include: [{ association: "usuarios" }],
+                     limit: 4, // Limitar el número de comentarios
+                     order: [["createdAt", "DESC"]]},
+
+                     {association: "usuarios" }]})
           
           .then(function (result) {
             return res.render("product", {producto: result});

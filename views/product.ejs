@@ -40,6 +40,7 @@
 								</strong>
 								<%=producto.comentarios[i].comentario %>
 							 </p>
+							 <p><%=producto.comentarios[i].createdAt.toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short' }) %> %></p>
 						</div>
 					</article>
 					<% } %>
