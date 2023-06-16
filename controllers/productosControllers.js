@@ -1,6 +1,7 @@
 const e = require('express');
 const db = require('../database/models')
 const modeloProducto = db.Producto; //Alias del modelo
+const modeloComentario = db.Comentario;
 let op = db.Sequelize.Op
 
 const controller = {
@@ -49,7 +50,9 @@ const controller = {
 
                       .then((result) => {
                         return res.redirect('/')
-                      }).catch((error) => {
+                      })
+
+                      .catch((error) => {
                         console.log(error)
                       })}
          },
@@ -102,11 +105,60 @@ const controller = {
                .then(function (result) {
                     return res.render('search-results', {resultados : result});
                 })
+
                .catch(function (error) {
                     console.log(error);
                 });
              }
+    },
+
+    agregarComentario: function (req, res) {
+
+       let errors = {}
+
+        if(req.body.comentario===""){
+            errors.message = "Por favor, antes de agregar un comentario asegurese que no este vacio."
+            res.locals.errors = errors
+
+            modeloProducto.findByPk(req.params.idProducto, //Lo necesite poner porque sino no podia mostrar el error en pantalla porque con redirect no trasladaba los errores.
+                     
+              {include: [{association: "comentarios",
+                         include: [{ association: "usuarios" }],
+                         limit: 4, // Limitar el número de comentarios
+                         order: [["createdAt", "DESC"]]},
+    
+                         {association: "usuarios" }]})
+              
+              .then(function (result) {
+                return res.render("product", {producto: result});
+              })
+    
+              .catch(function (error) {
+                console.log(error);
+              });
+            
+        }else{
+        
+            let infoNuevoComentario = {
+                idUsuario: res.locals.user.id,
+                idProducto: req.params.idProducto,
+                comentario: req.body.comentario,
+                createdAt: new Date ()}
+
+                 modeloComentario.create(infoNuevoComentario)
+
+                   .then(function(result){
+                       return res.redirect('/products/detalle/' + req.params.idProducto)
+                   })
+
+                   .catch(function(error){
+                        console.log(error)
+                   })
+             }
     }
 }
+        
+
+
 
 module.exports = controller

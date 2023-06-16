@@ -1,5 +1,4 @@
 const db = require('../database/models')
-
 const modeloProducto = db.Producto;
 
 const indexController = {

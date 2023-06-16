@@ -12,4 +12,6 @@ router.post('/editar/id/:id',controller.guardarEdit);
 
 router.get('/:search', controller.search)
 
+router.post('/agregarComentario/:idProducto',controller.agregarComentario)
+
 module.exports = router;

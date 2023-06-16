@@ -1,7 +1,7 @@
 const db = require("../database/models");
 const modeloUsuario = db.Usuario
 const bcrypt = require('bcryptjs');
-let op = db.Sequelize.Op
+let op = db.Sequelize.Op    ///nose si sacar
 
 const controller = {
 
@@ -9,7 +9,7 @@ const controller = {
         res.render('login')
     },
 
-    login: function (req, res) {
+    accionLogin: function (req, res) {
         let emailBuscado = req.body.email
         let contra = req.body.clave
 
@@ -32,7 +32,7 @@ const controller = {
                             return res.render('login')
                         }
                         }else{
-                            errores.message = "Mail inexistente, vuelva a intentarlo o regístrece si no lo hizo anterioremente."
+                            errores.message = "Mail inexistente, vuelva a intentarlo o cree su cuenta si no lo hizo anterioremente."
                             res.locals.errores = errores
                         return res.render('login')
                     }
@@ -51,7 +51,7 @@ const controller = {
             return res.redirect('/users/login');
         },
 
-        registro: function(req, res) {
+        mostrarRegistro: function(req, res) {
             res.render('register')
            
     
