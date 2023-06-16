@@ -96,15 +96,3 @@ insert into tablaComentarios (idUsuario, idProducto, comentario) values
 ('3', '10', 'Velocidad pura'),
 ('4', '10', 'Muy comodo'),
 ('5', '10', 'Calidad y seguridad, todo en uno');
-
-insert into tablaComentarios (idUsuario, idProducto, comentario) values
-('1', '1', 'TREMENDO!');
-
-insert into tablaComentarios (idUsuario, idProducto, comentario) values
-('1', '1', 'mannn!');
-
-insert into tablaComentarios (idUsuario, idProducto, comentario) values
-('1', '1', 'waaaaaaw!');
-
-insert into tablaComentarios (idUsuario, idProducto, comentario) values
-('1', '1', 'waaaaaargvefvcefw!');
