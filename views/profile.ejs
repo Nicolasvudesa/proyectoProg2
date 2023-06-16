@@ -14,18 +14,13 @@
 		</div>
 		<div class= "formularios"class="data-container col-6">
 			<div class="d-flex align-items-center ">
-				<h1 class="main-title"> <%= usuario.nombre %> 
-					<a href="/users/profile-edit">
-						<i class="fas fa-cog"></i>
-					</a>
-				</h1>
-				<a class="btn mt-3 ml-4" href="/users/profile-edit">SEGUIR</a>
+				<h1 class="main-title"> <%= usuario.nombre %></h1>
 			</div>
 			<div>
 				<ul class="">
+					<li>Activo desde: <%=usuario.createdAt.toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short' })%></li>
 					<li>Productos publicados: <%=usuario.productos.length%></li>
-					<li>200 seguidores</li>
-					<li>300 comentarios</li>
+					<li>Comentarios realizados: <%=usuario.comentarios.length%></li>
 				</ul>
 			</div>
 		</div>

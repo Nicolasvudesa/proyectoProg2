@@ -13,52 +13,50 @@ const controller = {
         let emailBuscado = req.body.email
         let contra = req.body.clave
 
-        modeloUsuario.findOne({where: [{ email: emailBuscado }]})
-        .then((result) => {
-            let errores = {}
+        modeloUsuario.findOne(
+
+            {where: [{ email: emailBuscado }]})
+
+        .then(function(result){
+
+          let errores = {}
+
             if (result != null) {
-                      let claveCorrecta = bcrypt.compareSync(contra, result.clave)
+
+                let claveCorrecta = bcrypt.compareSync(contra, result.clave)
+
                       if (claveCorrecta) {
                           req.session.user = result.dataValues;
                           if (req.body.recordame != undefined) {
-                            res.cookie('userId' , result.id , {maxAge: 1000 * 60 * 15})
-                          }
+                            res.cookie('userId' , result.id , {maxAge: 1000 * 60 * 15})}
                           return res.redirect('/');
-
-  
-                        } else{
-                            errores.message = "Contraseña incorrecta."
-                            res.locals.errores = errores
-                            return res.render('login')
-                        }
-                        }else{
-                            errores.message = "Mail inexistente, vuelva a intentarlo o cree su cuenta si no lo hizo anterioremente."
-                            res.locals.errores = errores
-                        return res.render('login')
-                    }
-  
-              })
-              .catch((err) => {
-                  console.log(err);
-              });
-
-        },
+                      }else{
+                         errores.message = "Contraseña incorrecta."
+                         res.locals.errores = errores
+                         return res.render('login')
+                        }}
+            else{errores.message = "Mail inexistente, vuelva a intentarlo o cree su cuenta si no lo hizo anterioremente."
+                res.locals.errores = errores
+                return res.render('login')}
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    },
 
     logout: function (req, res) {
         
         req.session.destroy();
         res.clearCookie('userId')
-        return res.redirect('/users/login');
+        return res.redirect('/');
     },
 
-        mostrarRegistro: function(req, res) {
-            res.render('register')
-           
-    
-        },
+    mostrarRegistro: function(req, res) {
+        res.render('register')
+    },
 
-        guardarRegistro: function(req, res) {
-        let errors = {}
+    guardarRegistro: function(req, res) {
+      let errors = {}
         if(req.body.mail=="" && req.body.usuario=="" && req.body.contra=="" && req.body.dni=="" && req.body.foto==""){
             errors.message = "Por favor, complete todos los campos."
             res.locals.errors = errors
@@ -100,61 +98,61 @@ const controller = {
             return res.render("register")
         }
         else if(req.body.contra){
-            let mailRepetido= {where:[{email: {[op.like]:req.body.mail}}]}
+
+          let mailRepetido= {where:[{email: {[op.like]:req.body.mail}}]}
+
             db.Usuario.findOne(mailRepetido)
+
             .then(function(mailRepetido){
                 if (mailRepetido != undefined){
                     errors.message = "El email ingresado ya esta registrado.";
                     res.locals.errors = errors
                     return res.render('register')}
+
                 else{
 
-    let infoRegistro = {
-        fotoPerfil: req.body.foto,
-        nombre: req.body.usuario,
-        email: req.body.mail,
-        clave: bcrypt.hashSync(req.body.contra, 10),
-        fecha: req.body.edad,
-        dni: req.body.dni,
-        }
+                    let infoRegistro = {
+                        fotoPerfil: req.body.foto,
+                        nombre: req.body.usuario,
+                        email: req.body.mail,
+                        clave: bcrypt.hashSync(req.body.contra, 10),
+                        fecha: req.body.edad,
+                        dni: req.body.dni}
         
-    modeloUsuario.create(infoRegistro)
+                    modeloUsuario.create(infoRegistro)
             
-        .then(function(result) {
-        return res.redirect('/users/login')
+                      .then(function(result) {
+                        return res.redirect('/users/login')
             
-        }).catch(function(error) {
-        console.log(error); 
-        })
-                }
+                      }).catch(function(error) {
+                        console.log(error); 
+                      })}
             })
-        }},
-    
-    
+            .catch(function(error) {
+                console.log(error); 
+            })
+        }
+    },
+      
     profile:  function(req,res){
 
         modeloUsuario.findByPk(req.params.id,  
 
             {include: [{ association: "productos", 
-                         include:[{association: "comentarios"}]}], 
+                         include:[{association: "comentarios"}]}, 
+                       { association: "comentarios"}],
 
-            order: [['productos','createdAt', 'DESC']]})
+            order: [['productos','createdAt', 'DESC']]
+            })
 
             .then(function (result) {
                 console.log(result.productos)
                 return res.render("profile", {usuario: result});
-              })
+            })
     
             .catch(function (error) {
                 console.log(error);
             });
-        },
-
-    edit:  function(req,res){
-        res.render("profile-edit",{
-            usuarioLogueado: true,
-            usuario: data.usuario
-        });
     },
 
     buscar: function (req, res) {
@@ -164,10 +162,12 @@ const controller = {
     search: function (req, res) {
 
       let busqueda = req.query.search;
+
         if(busqueda.length === 0){
             return res.redirect("/users/searchUsuario")} 
         else{
             modeloUsuario.findAll({
+
             include: [{association: 'productos'}],
             where: {
                 [op.or]: [
@@ -178,10 +178,10 @@ const controller = {
             .then(function (result) {
             return res.render('search-results-usuarios', {resultados : result});
             })
+
             .catch(function (error) {
             console.log(error);
-            });
-           }
+            })}
         }
 }
 
