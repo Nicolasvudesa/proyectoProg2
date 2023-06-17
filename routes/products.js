@@ -8,7 +8,7 @@ router.get('/agregar', controller.agregarProducto);
 router.post('/agregar',controller.guardarProducto);
 
 router.get('/editar/:id',controller.editar); 
-router.post('/editar/id/:id',controller.guardarEdit); 
+router.post('/editar/:id',controller.guardarEditar); 
 
 router.get('/:search', controller.search)
 

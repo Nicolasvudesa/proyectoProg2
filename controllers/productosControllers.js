@@ -51,58 +51,83 @@ const controller = {
             return res.redirect('/')
           })
 
-          .catch((error) => {
-            console.log(error)
-          })}
-  },
+                      .catch((error) => {
+                        console.log(error)
+                      })}
+     },
 
-  editar: (req,res) => {
+    editar: function(req,res){
 
-    let id= req.params.id;
+      let id=req.params.id
 
     modeloProducto.findByPk(id)
 
-      .then((result) => {
-      console.log(result);
-        return res.render("product-edit", {producto:result})
-      })
+          .then(function(result){
+             console.log(result);
+             return res.render("product-edit", {producto:result})
+          })
 
-      .catch((error) => {
-        console.log(error)
-      })
-  },
+          .catch((error) => {
+             console.log(error)
+          })
+    },
 
-  guardarEdit: (req,res) =>{
-    let id= req.params.id;
-    let info= req.body;
+    guardarEditar: function(req,res){
 
-    modeloProducto.update(info, {
-      where: [{id:id}]
-    })
+      let errors = {}
 
-        .then((result) => {
-          return res.redirect("/products/detalle/" + id)
-        })
+      if(req.body.producto=="" || req.body.descripcion=="" || req.body.foto==""){
+          errors.message = "Por favor, asegúrese de completar todos los campos ante de editar su producto."
+          res.locals.errors = errors
 
-    .catch((error) => {
-      console.log(error);
-    });
-  },
+          let id=req.params.id
+
+          modeloProducto.findByPk(id)
+
+          .then(function(result){
+             console.log(result);
+             return res.render("product-edit", {producto:result})
+          })
+
+          .catch((error) => {
+             console.log(error)
+          })}
+          
+      else{
+        
+          let id = req.params.id
+
+          let infoProductoEditado= {
+            producto: req.body.producto,
+            descripcion: req.body.descripcion,
+            imagen: req.body.foto,
+            createdAt: new Date ()}
+
+          modeloProducto.update(infoProductoEditado, {
+            where: [{id:req.params.id}]})
+
+           .then(function(result){
+               return res.redirect("/products/detalle/" + id)
+           })
+
+           .catch(function(error){
+              console.log(error);
+           });
+       }
+    },
 
   search: function (req, res) {
 
-  let busqueda = req.query.search;
+      let busqueda = req.query.search;
 
-    if(busqueda.length === 0){
-      return res.redirect("/")}  
-      else {
-        modeloProducto.findAll({
-          include: [{association: 'usuarios'}],
-          where: {[op.or]: [
-            { producto: { [op.like]: `%${busqueda}%` } },
-            { descripcion: { [op.like]: `%${busqueda}%` } }]},
-
-          order: [['createdAT', 'DESC']]})
+      if(busqueda.length === 0){
+        return res.redirect("/")}  
+        else {
+            modeloProducto.findAll({
+               include: [{association: 'usuarios'}],
+                where: {[op.or]: [ { producto: { [op.like]: `%${busqueda}%` } },
+                                { descripcion: { [op.like]: `%${busqueda}%` } }]},
+                order: [['createdAT', 'DESC']]})
 
           .then(function (result) {
               return res.render('search-results', {resultados : result});
