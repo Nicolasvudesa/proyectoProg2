@@ -6,32 +6,31 @@ let op = db.Sequelize.Op
 
 const controller = {
 
-    detalle: function(req, res){
+  detalle: function(req, res){
 
-      modeloProducto.findByPk(req.params.id, 
+    modeloProducto.findByPk(req.params.id, 
 
-        {include: [{association: "comentarios",
-                    include: [{ association: "usuarios" }],
-                    limit: 4, // Limitar el número de comentarios
-                    order: [["createdAt", "DESC"]]},
+      {include: [{association: "comentarios",
+        include: [{ association: "usuarios" }],
+        limit: 4, // Limitar el número de comentarios
+        order: [["createdAt", "DESC"]]},
 
-                    {association: "usuarios" }]})
-        
-        .then(function (result) {
-          return res.render("product", {producto: result});
-        })
+        {association: "usuarios" }]})
+      
+      .then(function (result) {
+        return res.render("product", {producto: result});
+      })
 
-        .catch(function (error) {
-          console.log(error);
-        });
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
 
-        },
+  agregarProducto: function(req, res){
+    return res.render("product-add")
+  },
 
-    agregarProducto: function(req, res){
-      return res.render("product-add")
-    },
-
-    guardarProducto: function(req, res){
+  guardarProducto: function(req, res){
 
       let errors = {}
       if(req.body.producto=="" || req.body.descripcion=="" || req.body.foto==""){
@@ -46,7 +45,7 @@ const controller = {
                   imagen: req.body.foto,
                   createdAt: new Date ()}
 
-                  modeloProducto.create(infoNuevoProducto)
+        modeloProducto.create(infoNuevoProducto)
 
                       .then(function(result){
                         return res.redirect('/')
@@ -61,7 +60,7 @@ const controller = {
 
       let id=req.params.id
 
-      modeloProducto.findByPk(id)
+    modeloProducto.findByPk(id)
 
           .then(function(result){
              console.log(result);
@@ -117,7 +116,7 @@ const controller = {
        }
     },
 
-    search: function (req, res) {
+  search: function (req, res) {
 
       let busqueda = req.query.search;
 
@@ -130,60 +129,60 @@ const controller = {
                                 { descripcion: { [op.like]: `%${busqueda}%` } }]},
                 order: [['createdAT', 'DESC']]})
 
-               .then(function (result) {
-                    return res.render('search-results', {resultados : result});
-                })
+          .then(function (result) {
+              return res.render('search-results', {resultados : result});
+          })
 
-               .catch(function (error) {
-                    console.log(error);
-                });
-             }
-    },
+          .catch(function (error) {
+              console.log(error);
+          });
+          }
+  },
 
-    agregarComentario: function (req, res) {
+  agregarComentario: function (req, res) {
 
-       let errors = {}
+    let errors = {}
 
-        if(req.body.comentario===""){
-            errors.message = "Por favor, antes de agregar un comentario asegurese que no este vacio."
-            res.locals.errors = errors
+    if(req.body.comentario===""){
+      errors.message = "Por favor, antes de agregar un comentario asegurese que no este vacio."
+      res.locals.errors = errors
 
-            modeloProducto.findByPk(req.params.idProducto, //Lo necesite poner porque sino no podia mostrar el error en pantalla porque con redirect no trasladaba los errores.
-                     
-              {include: [{association: "comentarios",
-                         include: [{ association: "usuarios" }],
-                         limit: 4, // Limitar el número de comentarios
-                         order: [["createdAt", "DESC"]]},
-    
-                         {association: "usuarios" }]})
-              
-              .then(function (result) {
-                return res.render("product", {producto: result});
-              })
-    
-              .catch(function (error) {
-                console.log(error);
-              });
-            
-        }else{
+      modeloProducto.findByPk(req.params.idProducto, //Lo necesite poner porque sino no podia mostrar el error en pantalla porque con redirect no trasladaba los errores.
+                
+        {include: [{association: "comentarios",
+          include: [{ association: "usuarios" }],
+          limit: 4, // Limitar el número de comentarios
+          order: [["createdAt", "DESC"]]},
+
+          {association: "usuarios" }]})
         
-            let infoNuevoComentario = {
-                idUsuario: res.locals.user.id,
-                idProducto: req.params.idProducto,
-                comentario: req.body.comentario,
-                createdAt: new Date ()}
+        .then(function (result) {
+          return res.render("product", {producto: result});
+        })
 
-                 modeloComentario.create(infoNuevoComentario)
-
-                   .then(function(result){
-                       return res.redirect('/products/detalle/' + req.params.idProducto)
-                   })
-
-                   .catch(function(error){
-                        console.log(error)
-                   })
-             }
+        .catch(function (error) {
+          console.log(error);
+        });   
     }
+    else{
+    
+      let infoNuevoComentario = {
+        idUsuario: res.locals.user.id,
+        idProducto: req.params.idProducto,
+        comentario: req.body.comentario,
+        createdAt: new Date ()}
+
+        modeloComentario.create(infoNuevoComentario)
+
+          .then(function(result){
+              return res.redirect('/products/detalle/' + req.params.idProducto)
+          })
+
+          .catch(function(error){
+              console.log(error)
+          })
+        }
+  }
 }
         
 

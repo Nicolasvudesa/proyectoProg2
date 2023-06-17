@@ -25,16 +25,16 @@ const controller = {
 
                 let claveCorrecta = bcrypt.compareSync(contra, result.clave)
 
-                      if (claveCorrecta) {
-                          req.session.user = result.dataValues;
-                          if (req.body.recordame != undefined) {
-                            res.cookie('userId' , result.id , {maxAge: 1000 * 60 * 15})}
-                          return res.redirect('/');
-                      }else{
-                         errores.message = "Contraseña incorrecta."
-                         res.locals.errores = errores
-                         return res.render('login')
-                        }}
+                    if (claveCorrecta) {
+                        req.session.user = result.dataValues;
+                        if (req.body.recordame != undefined) {
+                        res.cookie('userId' , result.id , {maxAge: 1000 * 60 * 15})}
+                        return res.redirect('/');
+                    }else{
+                        errores.message = "Contraseña incorrecta."
+                        res.locals.errores = errores
+                        return res.render('login')
+                    }}
             else{errores.message = "Mail inexistente, vuelva a intentarlo o cree su cuenta si no lo hizo anterioremente."
                 res.locals.errores = errores
                 return res.render('login')}
@@ -134,13 +134,14 @@ const controller = {
         }
     },
       
-    profile:  function(req,res){
+    profile: function(req,res){
 
         modeloUsuario.findByPk(req.params.id,  
 
-            {include: [{ association: "productos", 
-                         include:[{association: "comentarios"}]}, 
-                       { association: "comentarios"}],
+            {include: [{ 
+                association: "productos", 
+                include:[{association: "comentarios"}]}, 
+                { association: "comentarios"}],
 
             order: [['productos','createdAt', 'DESC']]
             })
