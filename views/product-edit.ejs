@@ -14,7 +14,12 @@
         </div>
 <section class = "formularios">
 
-    <form action= "/products/editar/id/<%=producto.id%>" method="POST"> <!--aca borras un id-->
+    <form action= "/products/editar/<%=producto.id%>" method="POST">
+
+        <% if (locals.errors) {%>
+            <p style="color: red"><%= errors.message%></p> 
+        <% } %>
+
         <div>
             <label>Imagen del producto</label>
             <input type="text" id="foto" name="foto" value="<%= producto.imagen %>">
@@ -31,10 +36,6 @@
             <input type="text" name="descripcion" value="<%= producto.descripcion %>">
         </div>
 
-		<div>
-			<label>Fecha de carga:</label>
-			<input type="date" name="fecha" id="fecha" value="<%= producto.createdAt %>">
-		</div>
 		<div>
 			<input type="submit" value="Guardar">
 		</div>
