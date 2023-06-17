@@ -105,7 +105,7 @@ const controller = {
 
             .then(function(mailRepetido){
                 if (mailRepetido != undefined){
-                    errors.message = "El email ingresado ya esta registrado.";
+                    errors.message = "El email ingresado ya esta registrado, proceda a ingresar.";
                     res.locals.errors = errors
                     return res.render('register')}
 
