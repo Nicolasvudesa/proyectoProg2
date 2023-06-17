@@ -58,7 +58,7 @@ const controller = {
     guardarRegistro: function(req, res) {
       let errors = {}
         if(req.body.mail=="" && req.body.usuario=="" && req.body.contra=="" && req.body.dni=="" && req.body.foto==""){
-            errors.message = "Por favor, complete todos los campos."
+            errors.message = "Por favor, complete todos los campos del formulario."
             res.locals.errors = errors
             return res.render("register")
         }

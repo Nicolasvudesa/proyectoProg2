@@ -35,7 +35,7 @@ const controller = {
 
       let errors = {}
       if(req.body.producto=="" || req.body.descripcion=="" || req.body.foto==""){
-          errors.message = "Por favor, asegúrese de completar todos los campos ante de agregar un producto."
+          errors.message = "Por favor, asegúrese de completar todos los campos antes de agregar un producto."
           res.locals.errors = errors
           return res.render("product-add")}  
       else {
@@ -48,11 +48,11 @@ const controller = {
 
                   modeloProducto.create(infoNuevoProducto)
 
-                      .then((result) => {
+                      .then(function(result){
                         return res.redirect('/')
                       })
 
-                      .catch((error) => {
+                      .catch(function(error){
                         console.log(error)
                       })}
      },
@@ -68,7 +68,7 @@ const controller = {
              return res.render("product-edit", {producto:result})
           })
 
-          .catch((error) => {
+          .catch(function(error){
              console.log(error)
           })
     },
@@ -78,7 +78,7 @@ const controller = {
       let errors = {}
 
       if(req.body.producto=="" || req.body.descripcion=="" || req.body.foto==""){
-          errors.message = "Por favor, asegúrese de completar todos los campos ante de editar su producto."
+          errors.message = "Por favor, asegúrese de completar todos los campos antes de editar su producto."
           res.locals.errors = errors
 
           let id=req.params.id
@@ -90,10 +90,10 @@ const controller = {
              return res.render("product-edit", {producto:result})
           })
 
-          .catch((error) => {
+          .catch(function(error){
              console.log(error)
           })}
-          
+
       else{
         
           let id = req.params.id
